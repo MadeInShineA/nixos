@@ -17,21 +17,35 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      vm-host = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./hosts/vm/configuration.nix
 
+          # Home Manager integration
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
 
-            home-manager.users.madeinshinea = import ./home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+            home-manager.users.madeinshinea = import ./modules/home-common.nix;
           }
         ];
       };
+
+      # Example placeholder for future machines (uncomment when needed):
+      # laptop = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     ./hosts/laptop/configuration.nix
+      #     home-manager.nixosModules.home-manager
+      #     {
+      #       home-manager.useGlobalPkgs = true;
+      #       home-manager.users.madeinshinea = import ./modules/home-common.nix;
+      #     }
+      #   ];
+      # };
     };
   };
 }
