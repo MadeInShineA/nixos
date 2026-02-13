@@ -53,8 +53,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  services.spice-vdagentd.enable = true;
-
   programs.neovim.enable = true;
 
   services.xserver.enable = true;
