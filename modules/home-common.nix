@@ -5,6 +5,7 @@
   # Universal user packages
   home.packages = with pkgs; [
     fastfetch
+    vesktop
   ];
 
   # Universal user programs config
