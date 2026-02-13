@@ -31,8 +31,12 @@
   # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
-    userName = "Olivier Amacker";
-    userEmail = "olivier.amacker@netplus.ch";
+    settings  = {
+      user = {
+        name = "Olivier Amacker";
+	email = "olivier.amacker@netplus.ch";
+      };
+    };
   };
 
   # This value determines the home Manager release that your
