@@ -24,10 +24,24 @@
   programs.neovim.enable = true;
   networking.networkmanager.enable = true;
 
+
+  /*
   # Desktop environment
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
+
   services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa
+    ark
+    okular
+    khelpcenter
+    baloo-widgets
+    krdp
+    konsole
+    gwenview
+  ];
+  */
 
   programs.hyprland = {
     enable = true;
@@ -40,6 +54,7 @@
     rofi
     waybar
     hyprpaper
+    brave
   ];
 
   fonts.packages = with pkgs; [
