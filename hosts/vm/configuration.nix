@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/common.nix
+    ../../common/configuration.nix
   ];
 
   # VM-specific identity

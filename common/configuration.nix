@@ -29,8 +29,21 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     git
+    foot
+    rofi
+    waybar
+    hyprpaper
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
   ];
 
   system.stateVersion = "25.11";
