@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description ="My NixOs configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -8,10 +8,15 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = { nixpkgs, home-manager, silentSDDM, ... }: {
     nixosConfigurations = {
       vm-host = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -27,6 +32,14 @@
               backupFileExtension = "backup";
             };
           }
+
+	 silentSDDM.nixosModules.default
+	 {
+	    programs.silentSDDM = {
+	      enable = true;
+	      theme = "default";
+	     };
+	  }
         ];
       };
     };
