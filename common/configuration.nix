@@ -21,9 +21,9 @@
 
   # Packages/services
   nixpkgs.config.allowUnfree = true;
-  programs.neovim.enable = true;
   networking.networkmanager.enable = true;
 
+  # programs.neovim.enable = true;
 
   /*
   # Desktop environment

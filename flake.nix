@@ -13,10 +13,15 @@
       url = "github:uiriansan/SilentSDDM";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 
-  outputs = { nixpkgs, home-manager, silentSDDM, ... }: {
+  outputs = { nixpkgs, home-manager, silentSDDM, nvf, ... }: {
     nixosConfigurations = {
       vm-host = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -40,6 +45,9 @@
 	      theme = "catppuccin-macchiato";
 	     };
 	  }
+
+	  nvf.homeManagerModules.default
+
         ];
       };
     };
