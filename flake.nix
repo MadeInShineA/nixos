@@ -33,6 +33,11 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+
+	      sharedModules = [
+	        nvf.homeManagerModules.default
+	      ];
+
               users.madeinshinea = import ./common/home.nix;
               backupFileExtension = "backup";
             };
@@ -45,8 +50,6 @@
 	      theme = "catppuccin-macchiato";
 	     };
 	  }
-
-	  nvf.homeManagerModules.default
 
         ];
       };
