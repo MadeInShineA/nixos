@@ -55,7 +55,6 @@
     rofi
     waybar
     hyprpaper
-    brave
   ];
 
   fonts.packages = with pkgs; [

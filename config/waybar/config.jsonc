@@ -27,7 +27,7 @@
         "custom/sep",
         "clock",
         "custom/sep",
-        "tray"
+        "battery",
     ],
 
     // Modules configuration

@@ -70,8 +70,8 @@ button:hover {
 }
 
 #battery {
-    color: @mag;
-    border-bottom: 4px solid @mag;
+    color: @white;
+    border-bottom: 4px solid @white;
 }
 
 #disk {
