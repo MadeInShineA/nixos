@@ -4,7 +4,7 @@
     ../../common/configuration.nix
   ];
 
-  # VM-specific identity
+  # Laptop-specific identity
   networking.hostName = "laptop-host";
   
   # Bootloader

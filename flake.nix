@@ -73,7 +73,6 @@
             };
           }
 
-     /*
 	 silentSDDM.nixosModules.default
 	 {
 	    programs.silentSDDM = {
@@ -81,8 +80,7 @@
 	      theme = "catppuccin-macchiato";
 	     };
 	  }
-	  */
-      ];
+        ];
       };
     };
   };

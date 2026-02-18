@@ -27,7 +27,7 @@
 
   
   # Desktop environment
-  
+  /*
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
 
@@ -42,9 +42,8 @@
     konsole
     gwenview
   ];
+  */
   
-  
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -57,7 +56,6 @@
     waybar
     hyprpaper
     brave
-    kitty
   ];
 
   fonts.packages = with pkgs; [
