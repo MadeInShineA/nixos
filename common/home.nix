@@ -35,6 +35,21 @@ in
 
   programs.nvf = {
     enable = true;
+
+    settings = {
+      vim = {
+        statusline.lualine.enable = true;
+        telescope.enable = true;
+        autocomplete.nvim-cmp.enable = true;
+        
+        languages = {
+          enableLSP = true;
+          enableTreesitter = true;
+
+          nix.enable = true;
+        };
+      };
+    };
   };
 
   xdg.configFile = builtins.mapAttrs
