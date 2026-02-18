@@ -61,8 +61,10 @@
     hypridle
   ];
 
-  services.logind.lidSwitch = "lock";
-  services.logind.lidSwitchExternalPower = "lock";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "lock";
+    HandleLidSwitchExternalPower = "lock";
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
