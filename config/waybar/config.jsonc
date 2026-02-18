@@ -73,7 +73,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "Bat: {capacity}% {icon} {time}",
+        "format": "{capacity}% {icon} {time}",
         "format-plugged": "{capacity}% ",
         "format-alt": "Bat {capacity}%",
         "format-time": "{H}:{M}",
