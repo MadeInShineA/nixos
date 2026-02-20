@@ -54,9 +54,17 @@
     foot
     rofi
     waybar
-    hyprpaper
     brave
+
+    hyprpaper
+    hyprlock
+    hypridle
   ];
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "lock";
+    HandleLidSwitchExternalPower = "lock";
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
