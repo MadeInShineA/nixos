@@ -1,6 +1,10 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Universal settings
   time.timeZone = "Europe/Zurich";
@@ -15,7 +19,7 @@
   users.users.madeinshinea = {
     isNormalUser = true;
     description = "madeinshinea";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [];
   };
 
@@ -25,7 +29,6 @@
 
   # programs.neovim.enable = true;
 
-  
   # Desktop environment
   /*
   services.xserver.enable = true;
@@ -43,7 +46,7 @@
     gwenview
   ];
   */
-  
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -60,6 +63,9 @@
     hyprlock
     hypridle
   ];
+
+  # Enable docker
+  virtualisation.docker.enable = true;
 
   services.logind.settings.Login = {
     HandleLidSwitch = "lock";
