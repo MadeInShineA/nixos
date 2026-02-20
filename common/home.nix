@@ -96,8 +96,12 @@ in {
           enableTreesitter = true;
           enableExtraDiagnostics = true;
 
-          nix = {
+          nix.enable = true;
+          markdown = {
             enable = true;
+            extensions = {
+              render-markdown-nvim.enable = true;
+            };
           };
         };
       };
