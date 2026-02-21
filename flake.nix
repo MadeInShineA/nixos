@@ -1,5 +1,5 @@
 {
-  description ="My NixOs configuration";
+  description = "My NixOs configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -9,19 +9,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    silentSDDM = {
-      url = "github:uiriansan/SilentSDDM";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-
-  outputs = { nixpkgs, home-manager, silentSDDM, nvf, ... }: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nvf,
+    ...
+  }: {
     nixosConfigurations = {
       vm-host = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -34,25 +33,17 @@
               useGlobalPkgs = true;
               useUserPackages = true;
 
-	      sharedModules = [
-	        nvf.homeManagerModules.default
-	      ];
+              sharedModules = [
+                nvf.homeManagerModules.default
+              ];
 
               users.madeinshinea = import ./common/home.nix;
               backupFileExtension = "backup";
             };
           }
-
-	 silentSDDM.nixosModules.default
-	 {
-	    programs.silentSDDM = {
-	      enable = true;
-	      theme = "catppuccin-macchiato";
-	     };
-	  }
         ];
       };
-      
+
       laptop-host = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -64,22 +55,14 @@
               useGlobalPkgs = true;
               useUserPackages = true;
 
-	      sharedModules = [
-	        nvf.homeManagerModules.default
-	      ];
+              sharedModules = [
+                nvf.homeManagerModules.default
+              ];
 
               users.madeinshinea = import ./common/home.nix;
               backupFileExtension = "backup";
             };
           }
-
-	 silentSDDM.nixosModules.default
-	 {
-	    programs.silentSDDM = {
-	      enable = true;
-	      theme = "catppuccin-macchiato";
-	     };
-	  }
         ];
       };
     };
