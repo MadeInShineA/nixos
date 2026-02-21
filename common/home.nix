@@ -12,6 +12,7 @@
     waybar = "waybar";
     # nvim = "nvim";
     rofi = "rofi";
+    mako = "mako";
   };
 in {
   home.username = "madeinshinea";

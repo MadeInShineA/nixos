@@ -6,6 +6,14 @@
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # Automatic cleanup and optimization
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # Universal settings
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -62,11 +70,20 @@
     hyprpaper
     hyprlock
     hypridle
+
+    # For audio / brightness control
+    pamixer
+    brightnessctl
+
+    # For notifications
+    mako
+    libnotify
   ];
 
-  # Enable docker
+  # Enable docker system wide
   virtualisation.docker.enable = true;
 
+  # Allow lock on lid down / up
   services.logind.settings.Login = {
     HandleLidSwitch = "lock";
     HandleLidSwitchExternalPower = "lock";
