@@ -2,9 +2,13 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Automatic cleanup and optimization
   nix.settings.auto-optimise-store = true;
@@ -33,33 +37,36 @@
   users.users.madeinshinea = {
     isNormalUser = true;
     description = "madeinshinea";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
   };
 
   # Packages/services
   nixpkgs.config.allowUnfree = true;
   networking.networkmanager.enable = true;
 
-  # programs.neovim.enable = true;
-
   # Desktop environment
   /*
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
+    services.xserver.enable = true;
+    services.displayManager.sddm.enable = true;
 
-  services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    elisa
-    ark
-    okular
-    khelpcenter
-    baloo-widgets
-    krdp
-    konsole
-    gwenview
-  ];
+    services.desktopManager.plasma6.enable = true;
+    environment.plasma6.excludePackages = with pkgs.kdePackages; [
+      elisa
+      ark
+      okular
+      khelpcenter
+      baloo-widgets
+      krdp
+      konsole
+      gwenview
+    ];
   */
+
+  programs.starship.enable = true;
 
   programs.hyprland = {
     enable = true;
