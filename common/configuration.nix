@@ -23,6 +23,12 @@
   };
   console.keyMap = "fr_CH";
 
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+
   # User account
   users.users.madeinshinea = {
     isNormalUser = true;
@@ -78,6 +84,11 @@
     # For notifications
     mako
     libnotify
+
+    # For screenshots
+    grim
+    slurp
+    swappy
   ];
 
   # Enable docker system wide
