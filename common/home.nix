@@ -98,6 +98,7 @@ in {
           enableExtraDiagnostics = true;
 
           nix.enable = true;
+          json.enable = true;
           markdown = {
             enable = true;
             extensions = {
