@@ -82,7 +82,9 @@
     git
     foot
     rofi
+    rofi-power-menu
     waybar
+
     brave
 
     hyprpaper
@@ -106,11 +108,14 @@
   # Enable docker system wide
   virtualisation.docker.enable = true;
 
-  # Allow lock on lid down / up
+  # Allow lock on lid down / up + Disable power button behavior (handled by hyprland)
   services.logind.settings.Login = {
     HandleLidSwitch = "lock";
     HandleLidSwitchExternalPower = "lock";
+    HandlePowerKey = "ignore";
   };
+
+  services.power-profiles-daemon.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
