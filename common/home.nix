@@ -26,7 +26,10 @@ in
   # Universal user packages
   home.packages = with pkgs; [
     fastfetch
+
     vesktop
+    telegram-desktop
+
     wl-clipboard
 
     # Nix lsp
