@@ -1,39 +1,32 @@
-
 #!/usr/bin/env bash
 
-# Check if powerprofilesctl exists
 if ! command -v powerprofilesctl &> /dev/null; then
     notify-send "Error" "powerprofilesctl not found."
     exit 1
 fi
 
-# Get current profile (the line starting with *)
-CURRENT=$(powerprofilesctl | grep "^\*" | awk '{print $2}' | tr -d ':')
+# Simple capitalize using sed
+capitalize() {
+    echo "$1" | sed 's/./\U&/'
+}
 
-# Extract all profile names (lines ending with :)
-# Format them for rofi, marking the active one
 OPTIONS=$(powerprofilesctl | grep ":$" | while read -r line; do
-    # Check if this line starts with * (active)
+    profile=$(echo "$line" | sed 's/^\* //;s/://;s/^[[:space:]]*//')
+    display=$(capitalize "$profile")
+    
     if echo "$line" | grep -q "^\*"; then
-        profile=$(echo "$line" | sed 's/^\* //' | tr -d ':')
-        echo " $profile (Active)"
+        echo "$display (Active)"
     else
-        profile=$(echo "$line" | tr -d ':' | xargs)
-        echo "$profile"
+        echo "$display"
     fi
 done)
 
-# Launch Rofi with some styling
-CHOICE=$(echo "$OPTIONS" | rofi -dmenu -i -p "Power Profile" \
+CHOICE=$(echo "$OPTIONS" | rofi -dmenu -i -p "Power profile" \
     -kb-row-up "Up,Control+k" \
     -kb-row-down "Down,Control+j")
 
 if [ -n "$CHOICE" ]; then
-    # Clean the choice (remove icon and status text)
-    PROFILE=$(echo "$CHOICE" | sed 's/ //;s/ (Active)//' | xargs)
-    
-    # Set the new profile
+    PROFILE=$(echo "$CHOICE" | sed 's/ //;s/ (Active)//' | tr '[:upper:]' '[:lower:]')
     powerprofilesctl set "$PROFILE"
-    
-    notify-send "Power Profile" "Switched to $PROFILE"
+    notify-send "Power Profile" "Switched to $(capitalize "$PROFILE")"
 fi
