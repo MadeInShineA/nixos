@@ -32,7 +32,17 @@ in
 
     wl-clipboard
 
-    # Nix lsp
+    simple-completion-language-server
+
+    # Kotlin LSP + Formatter
+    kotlin-language-server
+    ktlint
+
+    # TS LSP + Formatter
+    nodePackages.typescript-language-server
+    nodePackages.prettier
+
+    # Nix LSP
     nil
   ];
 
@@ -111,6 +121,7 @@ in
 
             nix.enable = true;
             json.enable = true;
+            kotlin.enable = true;
             markdown = {
               enable = true;
               extensions = {
@@ -127,6 +138,11 @@ in
     enable = true;
     settings = {
       theme = "catppuccin_mocha_transparent";
+
+      editor.bufferline = "multiple";
+      editor.line-number = "relative";
+      editor.inline-diagnostics.cursor-line = "warning";
+      editor.inline-diagnostics.other-lines = "warning";
       editor.cursor-shape = {
         normal = "block";
         insert = "bar";
@@ -140,6 +156,24 @@ in
         formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
         language-servers = [ "nil" ];
       }
+      {
+        name = "kotlin";
+        auto-format = true;
+        formatter.command = lib.getExe pkgs.ktlint;
+        language-servers = [ "kotlin-language-server" ];
+      }
+      {
+        name = "typescript";
+        auto-format = true;
+        formatter.command = lib.getExe pkgs.nodePackages.prettier;
+        language-servers = [ "typescript-language-server" ];
+      }
+      {
+        name = "javascript";
+        auto-format = true;
+        formatter.command = lib.getExe pkgs.nodePackages.prettier;
+        language-servers = [ "typescript-language-server" ];
+      }
     ];
     themes = {
       catppuccin_mocha_transparent = {
@@ -147,6 +181,10 @@ in
         "ui.background" = { };
       };
     };
+
+    extraPackages = [
+      pkgs.simple-completion-language-server
+    ];
   };
 
   xdg.configFile = builtins.mapAttrs (name: subpath: {
