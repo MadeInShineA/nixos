@@ -33,17 +33,13 @@ in
     wl-clipboard
 
     simple-completion-language-server
-
-    # Kotlin LSP + Formatter
-    kotlin-language-server
-    ktlint
-
-    # TS LSP + Formatter
-    nodePackages.typescript-language-server
-    nodePackages.prettier
+    codebook
 
     # Nix LSP
     nil
+
+    # Markdown LSP
+    marksman
   ];
 
   # Universal user programs config
@@ -149,32 +145,46 @@ in
         select = "underline";
       };
     };
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
-        language-servers = [ "nil" ];
-      }
-      {
-        name = "kotlin";
-        auto-format = true;
-        formatter.command = lib.getExe pkgs.ktlint;
-        language-servers = [ "kotlin-language-server" ];
-      }
-      {
-        name = "typescript";
-        auto-format = true;
-        formatter.command = lib.getExe pkgs.nodePackages.prettier;
-        language-servers = [ "typescript-language-server" ];
-      }
-      {
-        name = "javascript";
-        auto-format = true;
-        formatter.command = lib.getExe pkgs.nodePackages.prettier;
-        language-servers = [ "typescript-language-server" ];
-      }
-    ];
+
+    languages = {
+      language-server = {
+        codebook = {
+          command = "codebook-lsp";
+          args = [ "serve" ];
+        };
+      };
+
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
+          language-servers = [ "nil" ];
+        }
+        {
+          name = "markdown";
+          auto-format = true;
+          formatter = {
+            command = lib.getExe pkgs.deno;
+            args = [
+              "fmt"
+              "-"
+              "--ext"
+              "md"
+            ];
+          };
+          language-servers = [
+            "marksman"
+            "codebook"
+          ];
+          file-types = [
+            "md"
+            "mdx"
+            "qmd"
+          ];
+        }
+      ];
+    };
     themes = {
       catppuccin_mocha_transparent = {
         "inherits" = "catppuccin_mocha";
@@ -184,6 +194,7 @@ in
 
     extraPackages = [
       pkgs.simple-completion-language-server
+      pkgs.codebook
     ];
   };
 
