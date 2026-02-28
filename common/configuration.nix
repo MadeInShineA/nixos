@@ -84,7 +84,6 @@
     rofi
     rofi-power-menu
     waybar
-    kdePackages.dolphin
 
     brave
 

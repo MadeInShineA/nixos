@@ -33,8 +33,11 @@ in
   home.packages = with pkgs; [
     fastfetch
 
+    yazi
+
     vesktop
     telegram-desktop
+    opencode
 
     wl-clipboard
 
@@ -151,6 +154,7 @@ in
 
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     settings = {
       theme = "catppuccin_mocha_transparent";
 
