@@ -23,6 +23,12 @@ in
   home.username = "madeinshinea";
   home.homeDirectory = "/home/madeinshinea";
 
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    pictures = "${config.home.homeDirectory}/Pictures";
+  };
+
   # Universal user packages
   home.packages = with pkgs; [
     fastfetch
@@ -32,7 +38,12 @@ in
 
     wl-clipboard
 
+    super-productivity
+
+    # Re use words lsp
     simple-completion-language-server
+
+    # Spell checker lsp
     codebook
 
     # Nix LSP
@@ -53,6 +64,14 @@ in
     };
   };
 
+  programs.swappy = {
+    enable = true;
+    settings = {
+      Default = {
+        save_dir = "${config.xdg.userDirs.pictures}";
+      };
+    };
+  };
   /*
     programs.nvf = {
       enable = true;

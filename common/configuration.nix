@@ -84,6 +84,7 @@
     rofi
     rofi-power-menu
     waybar
+    kdePackages.dolphin
 
     brave
 
@@ -102,7 +103,6 @@
     # For screenshots
     grim
     slurp
-    swappy
   ];
 
   # Enable docker system wide
