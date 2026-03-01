@@ -37,6 +37,7 @@
   users.users.madeinshinea = {
     isNormalUser = true;
     description = "madeinshinea";
+    shell = pkgs.nushell;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -70,8 +71,6 @@
     enable = true;
     nix-direnv.enable = true;
   };
-
-  programs.starship.enable = true;
 
   programs.hyprland = {
     enable = true;

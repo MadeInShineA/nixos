@@ -67,6 +67,24 @@ in
     };
   };
 
+  programs.starship = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
+
+  programs.nushell = {
+    enable = true;
+
+    environmentVariables = {
+      EDITOR = "hx";
+      VIEW = "hx";
+    };
+
+    settings = {
+      show_banner = false;
+    };
+  };
+
   programs.swappy = {
     enable = true;
     settings = {
