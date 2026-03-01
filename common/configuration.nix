@@ -67,11 +67,6 @@
     ];
   */
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;

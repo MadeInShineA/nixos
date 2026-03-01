@@ -72,6 +72,12 @@ in
     enableNushellIntegration = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableNushellIntegration = true;
+  };
+
   programs.nushell = {
     enable = true;
 
