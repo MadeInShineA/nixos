@@ -54,6 +54,9 @@ in
 
     # Markdown LSP
     marksman
+
+    # Rust LSP
+    rust-analyzer
   ];
 
   # Universal user programs config
@@ -191,6 +194,7 @@ in
         insert = "bar";
         select = "underline";
       };
+      editor.file-picker.hidden = false;
     };
 
     languages = {
@@ -207,6 +211,13 @@ in
           auto-format = true;
           formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
           language-servers = [ "nil" ];
+        }
+        {
+          name = "rust";
+          auto-format = true;
+          formatter.command = lib.getExe pkgs.clippy;
+          language-servers = [ "rust-analyzer" ];
+
         }
         {
           name = "markdown";

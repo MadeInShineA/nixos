@@ -98,9 +98,6 @@
     slurp
   ];
 
-  # Enable docker system wide
-  virtualisation.docker.enable = true;
-
   # Allow lock on lid down / up + Disable power button behavior (handled by hyprland)
   services.logind.settings.Login = {
     HandleLidSwitch = "lock";
