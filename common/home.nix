@@ -127,7 +127,12 @@ in
     addons = with pkgs.ankiAddons; [
       (anki-connect.withConfig {
         config = {
-          webCorsOriginList = [ "https://app.asbplayer.dev" ];
+          webCorsOriginList = [
+            "http://localhost"
+            "http://localhost:8765"
+            "http://localhost:3000"
+            "https://app.asbplayer.dev"
+          ];
         };
       })
     ];
