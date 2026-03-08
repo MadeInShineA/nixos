@@ -29,6 +29,15 @@ in
     pictures = "${config.home.homeDirectory}/Pictures";
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+    ];
+  };
+
   # Universal user packages
   home.packages = with pkgs; [
     fastfetch
@@ -38,6 +47,10 @@ in
     vesktop
     telegram-desktop
     opencode
+
+    # Japanese fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
 
     wl-clipboard
 
@@ -105,6 +118,19 @@ in
         save_dir = "${config.xdg.userDirs.pictures}";
       };
     };
+  };
+
+  programs.anki = {
+    enable = true;
+    theme = "dark";
+
+    addons = with pkgs.ankiAddons; [
+      (anki-connect.withConfig {
+        config = {
+          webCorsOriginList = [ "https://app.asbplayer.dev" ];
+        };
+      })
+    ];
   };
   /*
     programs.nvf = {

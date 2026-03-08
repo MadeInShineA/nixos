@@ -51,7 +51,7 @@
                 // }
         },
         "clock": {
-            "format": "{:%H:%M}  ",
+            "format": " {:%H:%M}",
             "format-alt": "{:%A, %B %d, %Y (%R)}",
             "tooltip": true,
             "tooltip-format": "<tt><small>{calendar}</small></tt>",
