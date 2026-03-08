@@ -70,6 +70,10 @@ in
     };
   };
 
+  programs.tmux = {
+    enable = true;
+  };
+
   programs.starship = {
     enable = true;
     enableNushellIntegration = true;
