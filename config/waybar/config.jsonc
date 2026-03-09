@@ -1,135 +1,134 @@
 // -*- mode: jsonc -*-
 {
-        "layer": "top",
-        "position": "top",
-        "height": 30,
-        "spacing": 4,
-        // Choose the order of the modules
-        "modules-left": [
-                "hyprland/workspaces",
-                "custom/sep",
-                "hyprland/window",
-                "custom/sep"
-        ],
-        "modules-center": [],
-        "modules-right": [
-                "custom/sep",
-                "network",
-                "custom/sep",
-                "cpu",
-                "custom/sep",
-                "memory",
-                "custom/sep",
-                "disk",
-                "custom/sep",
-                "clock",
-                "custom/sep",
-                "pulseaudio",
-                "custom/sep",
-                "battery",
-        ],
-        // Modules configuration
-        "hyprland/workspaces": {
-                "disable-scroll": true,
-                "all-outputs": true,
-                "warp-on-scroll": false,
-                "format": "{name}",
-                "persistent-workspaces": {
-                        "*": 9
-                }
-        },
-        "hyprland/window": {
-                "max-length": 40,
-                "seperate-outputs": false
-        },
-        "tray": {
-                // "icon-size": 21,
-                "spacing": 10
-                // "icons": {
-                //   "blueman": "bluetooth",
-                //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-                // }
-        },
-        "clock": {
-            "format": " {:%H:%M}",
-            "format-alt": "{:%A, %B %d, %Y (%R)}",
-            "tooltip": true,
-            "tooltip-format": "<tt><small>{calendar}</small></tt>",
-            "calendar": {
-                "mode": "month",
-                "weeks-pos": "right",
-                "on-scroll": 1,
-                "iso8601": true,
-                "format": {
-                    "months": "<span color='#ffead3'><b>{}</b></span>",
-                    "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                    "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                    "today": "<span color='#ff6699'><b>{}</b></span>"
-                }
-            },
-            "actions": {
-                "on-scroll-up": "shift_up",
-                "on-scroll-down": "shift_down",
-                "on-click-right": "mode"
-            }
-        },
-        "cpu": {
-                "format": "CPU: {usage}%",
-                "tooltip": false
-        },
-        "memory": {
-                "format": "Mem: {used}GiB"
-        },
-        "disk": {
-                "interval": 60,
-                "path": "/",
-                "format": "Disk: {free}"
-        },
-        "battery": {
-                "states": {
-                        "good": 95,
-                        "warning": 30,
-                        "critical": 15
-                },
-                "format": "{capacity}% {icon} {time}",
-                "format-plugged": "{capacity}% ",
-                "format-alt": "Bat {capacity}%",
-                "format-time": "{H}h:{m}m",
-                "format-icons": [
-                        "",
-                        "",
-                        "",
-                        "",
-                        ""
-                ]
-        },
-        "network": {
-                "format": "Online",
-                "format-disconnected": "Disconnected ⚠"
-        },
-        "custom/sep": {
-                "format": "|",
-                "interval": 0
-        },
-        "pulseaudio": {
-                // Display format with Nerd Font icons
-                "format": "{icon} {volume}%",
-                "format-muted": " Muted",
-                "format-icons": {
-                        "default": [
-                                "",
-                                "",
-                                ""
-                        ]
-                },
-                // Click handlers using pamixer
-                "on-click": "pamixer -t",
-                "on-scroll-up": "pamixer -i 5",
-                "on-scroll-down": "pamixer -d 5",
-                // Behavior
-                "scroll-step": 5,
-                "min-volume": 0,
-                "max-volume": 100
-        }
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 4,
+  // Choose the order of the modules
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/sep",
+    "hyprland/window",
+    "custom/sep",
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/wireguard",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "cpu",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "disk",
+    "custom/sep",
+    "clock",
+    "custom/sep",
+    "pulseaudio",
+    "custom/sep",
+    "battery",
+  ],
+  // Modules configuration
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "*": 9,
+    },
+  },
+  "hyprland/window": {
+    "max-length": 40,
+    "seperate-outputs": false,
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10,
+    // "icons": {
+    //   "blueman": "bluetooth",
+    //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+    // }
+  },
+  "clock": {
+    "format": " {:%H:%M}",
+    "format-alt": "{:%A, %B %d, %Y (%R)}",
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "iso8601": true,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>",
+      },
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+      "on-click-right": "mode",
+    },
+  },
+  "cpu": {
+    "format": "CPU: {usage}%",
+    "tooltip": false,
+  },
+  "memory": {
+    "format": "Mem: {used}GiB",
+  },
+  "disk": {
+    "interval": 60,
+    "path": "/",
+    "format": "Disk: {free}",
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{capacity}% {icon} {time}",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "Bat {capacity}%",
+    "format-time": "{H}h:{m}m",
+    "format-icons": ["", "", "", "", ""],
+  },
+  "network": {
+    "format": "Online",
+    "format-disconnected": "Disconnected ⚠",
+  },
+  "custom/sep": {
+    "format": "|",
+    "interval": 0,
+  },
+  "pulseaudio": {
+    // Display format with Nerd Font icons
+    "format": "{icon} {volume}%",
+    "format-muted": " Muted",
+    "format-icons": {
+      "default": ["", "", ""],
+    },
+    // Click handlers using pamixer
+    "on-click": "pamixer -t",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5",
+    // Behavior
+    "scroll-step": 5,
+    "min-volume": 0,
+    "max-volume": 100,
+  },
+  "custom/wireguard": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/wireguard.sh",
+    "exec-on-event": true,
+    "interval": 5,
+    "on-click": "~/.config/waybar/scripts/wireguard.sh menu | rofi -dmenu -i -p 'WireGuard' | xargs -r -I {} ~/.config/waybar/scripts/wireguard.sh toggle \"{}\"",
+    "return-type": "json",
+  },
 }

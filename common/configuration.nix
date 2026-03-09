@@ -96,9 +96,6 @@
     # For screenshots
     grim
     slurp
-
-    # For wireguard
-    wireguard-tools
   ];
 
   # Allow lock on lid down / up + Disable power button behavior (handled by hyprland)

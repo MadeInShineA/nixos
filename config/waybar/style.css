@@ -1,14 +1,14 @@
-@define-color bg    #1a1b26; 
-@define-color fg    #a9b1d6; 
-@define-color blk   #32344a; 
-@define-color red   #f7768e; 
-@define-color grn   #9ece6a; 
-@define-color ylw   #e0af68; 
-@define-color blu   #7aa2f7; 
-@define-color mag   #ad8ee6; 
-@define-color cyn   #0db9d7; 
-@define-color brblk #444b6a; 
-@define-color white #ffffff; 
+@define-color bg    #1a1b26;
+@define-color fg    #a9b1d6;
+@define-color blk   #32344a;
+@define-color red   #f7768e;
+@define-color grn   #9ece6a;
+@define-color ylw   #e0af68;
+@define-color blu   #7aa2f7;
+@define-color mag   #ad8ee6;
+@define-color cyn   #0db9d7;
+@define-color brblk #444b6a;
+@define-color white #ffffff;
 
 * {
     font-family: "JetBrainsMono Nerd Font", monospace;
@@ -103,13 +103,37 @@ button:hover {
 }
 
 #pulseaudio {
-    color: @blu;  /* Match your #network color */
+    color: @blu; /* Match your #network color */
     border-bottom: 4px solid @blu;
     padding: 0 8px;
 }
 
 #pulseaudio.muted {
-    color: @red;  /* Highlight when muted */
+    color: @red; /* Highlight when muted */
     border-bottom-color: @red;
 }
 
+/* WireGuard Module Styling */
+#custom-wireguard {
+    padding: 0 8px;
+    color: @brblk; /* Dimmed when inactive */
+    border-bottom: 4px solid @brblk;
+}
+
+/* Active State - Using Cyan to match Clock/Workspaces */
+#custom-wireguard.wg-active {
+    color: @grn;
+    border-bottom: 4px solid @grn;
+}
+
+/* Tooltip Styling (Optional - makes the hover tooltip look nicer) */
+tooltip {
+    background-color: @bg;
+    border: 1px solid @brblk;
+    border-radius: 5px;
+}
+tooltip label {
+    color: @fg;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 14px;
+}
