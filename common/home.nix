@@ -137,6 +137,29 @@ in
       })
     ];
   };
+
+  programs.zed-editor = {
+    enable = true;
+
+    extensions = [
+      "nix"
+      "catppuccin"
+    ];
+
+    installRemoteServer = true;
+
+    userSettings = {
+      telemetry = {
+        metrics = false;
+      };
+
+      disable_ai = true;
+
+      theme = "Catppuccin Mocha";
+      helix_mode = true;
+    };
+  };
+
   /*
     programs.nvf = {
       enable = true;
