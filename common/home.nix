@@ -157,6 +157,15 @@ in
 
       theme = "Catppuccin Mocha";
       helix_mode = true;
+
+      font_family = "JetBrainsMono Nerd Font";
+      ui_font_size = 16;
+      buffer_font_size = 16;
+
+      terminal = {
+        font_family = "JetBrainsMono Nerd Font";
+        buffer_font_family = "JetBrainsMono Nerd Font";
+      };
     };
   };
 
