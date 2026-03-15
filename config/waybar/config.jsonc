@@ -127,7 +127,6 @@
     "format": "{}",
     "exec": "~/.config/waybar/scripts/wireguard.sh",
     "exec-on-event": true,
-    "interval": 5,
     "on-click": "~/.config/waybar/scripts/wireguard.sh menu | rofi -dmenu -i -p 'WireGuard' | xargs -r -I {} ~/.config/waybar/scripts/wireguard.sh toggle \"{}\"",
     "return-type": "json",
   },
