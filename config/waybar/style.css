@@ -114,26 +114,14 @@ button:hover {
 }
 
 /* WireGuard Module Styling */
-#custom-wireguard {
+#custom-vpn {
     padding: 0 8px;
     color: @brblk; /* Dimmed when inactive */
     border-bottom: 4px solid @brblk;
 }
 
 /* Active State - Using Cyan to match Clock/Workspaces */
-#custom-wireguard.wg-active {
+#custom-vpn.vpn-active {
     color: @grn;
     border-bottom: 4px solid @grn;
-}
-
-/* Tooltip Styling (Optional - makes the hover tooltip look nicer) */
-tooltip {
-    background-color: @bg;
-    border: 1px solid @brblk;
-    border-radius: 5px;
-}
-tooltip label {
-    color: @fg;
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 14px;
 }

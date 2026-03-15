@@ -13,7 +13,7 @@
   ],
   "modules-center": [],
   "modules-right": [
-    "custom/wireguard",
+    "custom/vpn",
     "custom/sep",
     "network",
     "custom/sep",
@@ -102,6 +102,7 @@
   "network": {
     "format": "Online",
     "format-disconnected": "Disconnected ⚠",
+    "tooltip-format": "{ipaddr}",
   },
   "custom/sep": {
     "format": "|",
@@ -123,11 +124,12 @@
     "min-volume": 0,
     "max-volume": 100,
   },
-  "custom/wireguard": {
+  "custom/vpn": {
     "format": "{}",
-    "exec": "~/.config/waybar/scripts/wireguard.sh",
+    "exec": "~/.config/waybar/scripts/vpn-manager.sh",
     "exec-on-event": true,
-    "on-click": "~/.config/waybar/scripts/wireguard.sh menu | rofi -dmenu -i -p 'WireGuard' | xargs -r -I {} ~/.config/waybar/scripts/wireguard.sh toggle \"{}\"",
+    "interval": 5,
+    "on-click": "bash -c '~/.config/waybar/scripts/vpn-manager.sh menu | rofi -dmenu -i -p VPN | { read -r line; [ -n \"$line\" ] && ~/.config/waybar/scripts/vpn-manager.sh toggle \"$line\"; }'",
     "return-type": "json",
   },
 }

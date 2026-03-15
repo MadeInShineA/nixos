@@ -41,6 +41,8 @@ in
   # Universal user packages
   home.packages = with pkgs; [
     fastfetch
+    btop
+    qbittorrent-enhanced
 
     yazi
 

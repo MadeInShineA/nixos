@@ -107,6 +107,19 @@
 
   services.power-profiles-daemon.enable = true;
 
+  # Enable tailscale
+  services.tailscale.enable = true;
+
+  # Enable mullvad VPN
+  services.resolved.enable = true;
+
+  services.mullvad-vpn = {
+    enable = true;
+
+    # For the gui tool
+    # package = pkgs.mullvad-vpn;
+  };
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
