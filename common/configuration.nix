@@ -8,6 +8,7 @@
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
+    "pipe-operators"
   ];
 
   # Automatic cleanup and optimization
@@ -41,6 +42,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "podman"
     ];
     packages = with pkgs; [ ];
   };
@@ -72,6 +74,16 @@
     xwayland.enable = true;
   };
 
+  # Enable distrobox
+  virtualisation.podman = {
+    enable = true;
+    # Create a `docker` alias for podman, to use it as a drop-in replacement
+    dockerCompat = true;
+
+    # Required for containers under podman-compose to be able to talk to each other.
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
   environment.systemPackages = with pkgs; [
     git
     foot
@@ -96,6 +108,12 @@
     # For screenshots
     grim
     slurp
+
+    podman-tui
+    podman-compose
+
+    distrobox
+
   ];
 
   # Allow lock on lid down / up + Disable power button behavior (handled by hyprland)
