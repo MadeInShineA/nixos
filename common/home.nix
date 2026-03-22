@@ -42,13 +42,13 @@ in
   home.packages = with pkgs; [
     fastfetch
     btop
-    qbittorrent-enhanced
 
     yazi
 
     vesktop
     telegram-desktop
     opencode
+    qbittorrent-enhanced
 
     # Japanese fonts
     noto-fonts-cjk-sans
@@ -146,6 +146,10 @@ in
     extensions = [
       "nix"
       "catppuccin"
+      "quarto"
+      "typst"
+      "codebook"
+      "comment"
     ];
 
     installRemoteServer = true;
@@ -159,6 +163,12 @@ in
 
       theme = "Catppuccin Mocha";
       helix_mode = true;
+
+      inlay_hints = {
+        enabled = true;
+        show_type_hints = true;
+        show_parameter_hints = true;
+      };
 
       font_family = "JetBrainsMono Nerd Font";
       ui_font_size = 16;
