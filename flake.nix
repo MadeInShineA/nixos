@@ -8,63 +8,57 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    nvf,
-    ...
-  }: {
-    nixosConfigurations = {
-      vm-host = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/vm/configuration.nix
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    {
+      nixosConfigurations = {
+        vm-host = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/vm/configuration.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
 
-              sharedModules = [
-                nvf.homeManagerModules.default
-              ];
+                sharedModules = [
+                ];
 
-              users.madeinshinea = import ./common/home.nix;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-      };
+                users.madeinshinea = import ./common/home.nix;
+                backupFileExtension = "backup";
+              };
+            }
+          ];
+        };
 
-      laptop-host = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/laptop/configuration.nix
+        laptop-host = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/laptop/configuration.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
 
-              sharedModules = [
-                nvf.homeManagerModules.default
-              ];
+                sharedModules = [
+                ];
 
-              users.madeinshinea = import ./common/home.nix;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
+                users.madeinshinea = import ./common/home.nix;
+                backupFileExtension = "backup";
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }
