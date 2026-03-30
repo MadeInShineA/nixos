@@ -70,8 +70,6 @@ in
     # Markdown LSP
     marksman
 
-    # Rust LSP
-    rust-analyzer
   ];
 
   # Universal user programs config
@@ -161,6 +159,8 @@ in
 
       disable_ai = true;
 
+      colorize_brackets = true;
+
       theme = "Catppuccin Mocha";
       helix_mode = true;
 
@@ -178,85 +178,23 @@ in
         font_family = "JetBrainsMono Nerd Font";
         buffer_font_family = "JetBrainsMono Nerd Font";
       };
-    };
-  };
 
-  /*
-    programs.nvf = {
-      enable = true;
-
-      settings = {
-        vim = {
-          telescope.enable = true;
-
-          statusline = {
-            lualine.enable = true;
-          };
-
-          filetree = {
-            neo-tree.enable = true;
-          };
-
-          autocomplete = {
-            nvim-cmp.enable = true;
-          };
-
-          git = {
-            enable = true;
-            gitsigns.enable = true;
-          };
-
-          clipboard = {
-            enable = true;
-            registers = "unnamedplus";
-          };
-
-          theme = {
-            enable = true;
-            name = "catppuccin";
-            style = "mocha";
-            transparent = true;
-          };
-
-          notify = {
-            nvim-notify.enable = true;
-          };
-
-          tabline = {
-            nvimBufferline.enable = true;
-          };
-
-          binds = {
-            whichKey.enable = true;
-            cheatsheet.enable = true;
-          };
-
-          lsp = {
-            enable = true;
-            formatOnSave = true;
-            trouble.enable = true;
-            lspSignature.enable = true;
-          };
-
-          languages = {
-            enableFormat = true;
-            enableTreesitter = true;
-            enableExtraDiagnostics = true;
-
-            nix.enable = true;
-            json.enable = true;
-            kotlin.enable = true;
-            markdown = {
-              enable = true;
-              extensions = {
-                render-markdown-nvim.enable = true;
-              };
-            };
+      lsp = {
+        ruff = {
+          binary = {
+            path_lookup = true;
+            arguments = [ "server" ];
           };
         };
+
+        tinymist.binary.path_lookup = true;
       };
+
+      # Tell Zed to use direnv and direnv can use a flake.nix environment
+      load_direnv = "shell_hook";
+
     };
-  */
+  };
 
   programs.helix = {
     enable = true;
