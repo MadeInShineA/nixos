@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
   ...
 }:
@@ -58,17 +59,8 @@ in
 
     super-productivity
 
-    # Re use words lsp
-    simple-completion-language-server
-
-    # Spell checker lsp
-    codebook
-
-    # Nix LSP
-    nil
-
-    # Markdown LSP
-    marksman
+    # Nix lsp
+    nixd
 
   ];
 
@@ -141,6 +133,8 @@ in
   programs.zed-editor = {
     enable = true;
 
+    package = pkgs-unstable.zed-editor;
+
     extensions = [
       "nix"
       "catppuccin"
@@ -180,19 +174,14 @@ in
       };
 
       lsp = {
-        ruff = {
-          binary = {
-            path_lookup = true;
-            arguments = [ "server" ];
+        rust-analyzer = {
+          initialization_options = {
+            check = {
+              command = "clippy";
+            };
           };
         };
-
-        tinymist.binary.path_lookup = true;
       };
-
-      # Tell Zed to use direnv and direnv can use a flake.nix environment
-      load_direnv = "shell_hook";
-
     };
   };
 
@@ -227,7 +216,7 @@ in
           name = "nix";
           auto-format = true;
           formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
-          language-servers = [ "nil" ];
+          language-servers = [ "nixd" ];
         }
         {
           name = "rust";

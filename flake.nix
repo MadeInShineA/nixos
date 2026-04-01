@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +15,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       ...
     }:
@@ -31,6 +34,13 @@
 
                 sharedModules = [
                 ];
+
+                extraSpecialArgs = {
+                  pkgs-unstable = import nixpkgs-unstable {
+                    system = "x86_64-linux";
+                    config.allowUnfree = true;
+                  };
+                };
 
                 users.madeinshinea = import ./common/home.nix;
                 backupFileExtension = "backup";
@@ -52,6 +62,13 @@
 
                 sharedModules = [
                 ];
+
+                extraSpecialArgs = {
+                  pkgs-unstable = import nixpkgs-unstable {
+                    system = "x86_64-linux";
+                    config.allowUnfree = true;
+                  };
+                };
 
                 users.madeinshinea = import ./common/home.nix;
                 backupFileExtension = "backup";
