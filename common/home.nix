@@ -62,6 +62,9 @@ in
     # Nix lsp
     nixd
 
+    # Unstable packages
+    pkgs-unstable.jujutsu
+
   ];
 
   # Universal user programs config
@@ -87,6 +90,11 @@ in
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    enableNushellIntegration = true;
+  };
+
+  programs.carapace = {
+    enable = true;
     enableNushellIntegration = true;
   };
 
@@ -151,7 +159,7 @@ in
         metrics = false;
       };
 
-      disable_ai = true;
+      disable_ai = false;
 
       colorize_brackets = true;
 
