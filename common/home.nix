@@ -61,6 +61,7 @@ in
 
     # Nix lsp
     nixd
+    nil
 
     # Unstable packages
     pkgs-unstable.jujutsu
@@ -150,6 +151,9 @@ in
       "typst"
       "codebook"
       "comment"
+      "toml"
+      "vue"
+      "php"
     ];
 
     installRemoteServer = true;
@@ -159,7 +163,7 @@ in
         metrics = false;
       };
 
-      disable_ai = false;
+      disable_ai = true;
 
       colorize_brackets = true;
 
@@ -172,13 +176,13 @@ in
         show_parameter_hints = true;
       };
 
-      font_family = "JetBrainsMono Nerd Font";
       ui_font_size = 16;
+
+      buffer_font_family = "JetBrainsMono Nerd Font";
       buffer_font_size = 16;
 
       terminal = {
         font_family = "JetBrainsMono Nerd Font";
-        buffer_font_family = "JetBrainsMono Nerd Font";
       };
 
       lsp = {
