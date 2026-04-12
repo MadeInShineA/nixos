@@ -10,6 +10,11 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mangowc = {
+      url = "github:DreamMaoMao/mangowc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -17,6 +22,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      mangowc,
       ...
     }:
     {
@@ -25,7 +31,6 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/vm/configuration.nix
-
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -53,6 +58,8 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/laptop/configuration.nix
+
+            mangowc.nixosModules.mango
 
             home-manager.nixosModules.home-manager
             {
