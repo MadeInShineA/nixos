@@ -10,6 +10,14 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    cosmic-manager = {
+      url = "github:HeitorAugustoLN/cosmic-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs =
@@ -17,6 +25,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      cosmic-manager,
       ...
     }:
     {
@@ -70,7 +79,12 @@
                   };
                 };
 
-                users.madeinshinea = import ./common/home.nix;
+                users.madeinshinea = {
+                  imports = [
+                    ./common/home.nix
+                    cosmic-manager.homeManagerModules.cosmic-manager
+                  ];
+                };
                 backupFileExtension = "backup";
               };
             }
