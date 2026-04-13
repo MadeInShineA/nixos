@@ -16,6 +16,7 @@ let
     waybar = "waybar";
     rofi = "rofi";
     mako = "mako";
+    opencode = "opencode";
     "starship.toml" = "starship.toml";
   };
 
@@ -48,7 +49,6 @@ in
 
     vesktop
     telegram-desktop
-    opencode
     qbittorrent-enhanced
 
     # Japanese fonts
@@ -65,6 +65,7 @@ in
 
     # Unstable packages
     pkgs-unstable.jujutsu
+    pkgs-unstable.opencode
 
   ];
 
