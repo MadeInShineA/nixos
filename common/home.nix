@@ -155,6 +155,7 @@ in
       "toml"
       "vue"
       "php"
+      "nu"
     ];
 
     installRemoteServer = true;
