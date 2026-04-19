@@ -34,6 +34,9 @@
     powerOnBoot = false;
   };
 
+  # Enable pipewire for bluetooth sink switch
+  services.pipewire.pulse.enable = true;
+
   # User account
   users.users.madeinshinea = {
     isNormalUser = true;
