@@ -19,63 +19,38 @@
       home-manager,
       ...
     }:
+    let
+      system = "x86_64-linux";
+
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      mkSystem =
+        hostModule:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            hostModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                sharedModules = [ ];
+                extraSpecialArgs = { inherit pkgs-unstable; };
+                users.madeinshinea = import ./modules/home;
+                backupFileExtension = "backup";
+              };
+            }
+          ];
+        };
+    in
     {
       nixosConfigurations = {
-        vm-host = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/vm/configuration.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-
-                sharedModules = [
-                ];
-
-                extraSpecialArgs = {
-                  pkgs-unstable = import nixpkgs-unstable {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                };
-
-                users.madeinshinea = import ./common/home.nix;
-                backupFileExtension = "backup";
-              };
-            }
-          ];
-        };
-
-        laptop-host = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/laptop/configuration.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-
-                sharedModules = [
-                ];
-
-                extraSpecialArgs = {
-                  pkgs-unstable = import nixpkgs-unstable {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                };
-
-                users.madeinshinea = import ./common/home.nix;
-                backupFileExtension = "backup";
-              };
-            }
-          ];
-        };
+        vm-host = mkSystem ./hosts/vm;
+        laptop-host = mkSystem ./hosts/laptop;
       };
     };
 }
