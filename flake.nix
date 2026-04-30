@@ -10,47 +10,11 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    import-tree.url = "github:vic/import-tree";
   };
 
-  outputs =
-    {
-      nixpkgs,
-      nixpkgs-unstable,
-      home-manager,
-      ...
-    }:
-    let
-      system = "x86_64-linux";
-
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-      mkSystem =
-        hostModule:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            hostModule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                sharedModules = [ ];
-                extraSpecialArgs = { inherit pkgs-unstable; };
-                users.madeinshinea = import ./modules/home;
-                backupFileExtension = "backup";
-              };
-            }
-          ];
-        };
-    in
-    {
-      nixosConfigurations = {
-        vm-host = mkSystem ./hosts/vm;
-        laptop-host = mkSystem ./hosts/laptop;
-      };
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
