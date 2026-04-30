@@ -57,8 +57,6 @@ in
 
     wl-clipboard
 
-    super-productivity
-
     # Nix lsp
     nixd
     nil
@@ -66,6 +64,11 @@ in
     # Unstable packages
     pkgs-unstable.jujutsu
     pkgs-unstable.opencode
+
+    pkgs-unstable.zellij
+
+    pkgs-unstable.cherry-studio
+    pkgs-unstable.ollama
 
   ];
 
@@ -102,14 +105,15 @@ in
 
   programs.nushell = {
     enable = true;
-
     environmentVariables = {
       EDITOR = "hx";
       VIEW = "hx";
     };
-
     settings = {
       show_banner = false;
+    };
+    shellAliases = {
+      zed = "zeditor .";
     };
   };
 
@@ -165,7 +169,34 @@ in
         metrics = false;
       };
 
-      disable_ai = true;
+      git_panel = {
+        dock = "left";
+      };
+
+      debugger = {
+        dock = "left";
+      };
+      project_panel = {
+        dock = "left";
+      };
+
+      agent_panel = {
+        dock = "right";
+      };
+
+      agent = {
+        sidebar_side = "right";
+        dock = "right";
+      };
+
+      disable_ai = false;
+
+      agent_servers = {
+        OpenCode = {
+          command = "opencode";
+          args = [ "acp" ];
+        };
+      };
 
       colorize_brackets = true;
 
