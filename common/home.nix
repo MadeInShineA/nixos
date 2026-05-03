@@ -70,6 +70,8 @@ in
     pkgs-unstable.cherry-studio
     pkgs-unstable.ollama
 
+    pkgs-unstable.remnote
+
   ];
 
   # Universal user programs config
