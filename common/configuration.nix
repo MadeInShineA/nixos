@@ -34,6 +34,8 @@
     powerOnBoot = false;
   };
 
+  services.blueman.enable = true;
+
   # Enable pipewire for bluetooth sink switch
   services.pipewire.pulse.enable = true;
 
@@ -46,6 +48,7 @@
       "networkmanager"
       "wheel"
       "podman"
+      "libvirtd"
     ];
     packages = with pkgs; [ ];
   };
@@ -138,6 +141,19 @@
     # For the gui tool
     # package = pkgs.mullvad-vpn;
   };
+
+  # Enable libvirt
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+    };
+  };
+
+  # Enable virt manager
+  programs.virt-manager.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

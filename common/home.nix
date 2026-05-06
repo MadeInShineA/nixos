@@ -72,6 +72,8 @@ in
 
     pkgs-unstable.remnote
 
+    pkgs-unstable.bitwarden-desktop
+
   ];
 
   # Universal user programs config
@@ -117,6 +119,29 @@ in
     shellAliases = {
       zed = "zeditor .";
     };
+
+    extraConfig = ''
+      let env_path = ($env.HOME | path join "nixos" ".env")
+
+      if ($env_path | path exists) {
+        # 1. Read and clean lines
+        let lines = (open $env_path --raw | lines | each { |l| $l | str trim } | where { |l| $l != "" and not ($l | str starts-with "#") })
+        
+        # 2. Parse into a record { KEY: "VALUE" }
+        let env_record = ($lines 
+          | parse "{key}={value}" 
+          | reduce -f {} { |it acc| 
+              let k = ($it.key | str trim)
+              let v = ($it.value | str trim | str replace --all '"' "" | str replace --all "'" "")
+              $acc | upsert $k $v
+            }
+        )
+        
+        # 3. Load the record into the environment
+        load-env $env_record
+      }
+    '';
+
   };
 
   programs.swappy = {
