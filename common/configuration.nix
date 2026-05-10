@@ -128,6 +128,7 @@
     # For niri xwayland integration
     xwayland-satellite
 
+    # For noctalia shell
     pkgs-unstable.noctalia-shell
 
   ];
@@ -194,6 +195,8 @@
 
     };
   };
+
+  services.upower.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
