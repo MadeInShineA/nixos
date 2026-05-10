@@ -59,26 +59,26 @@
 
   # Desktop environment
   /*
-    services.xserver.enable = true;
-    services.displayManager.sddm.enable = true;
+      services.xserver.enable = true;
+      services.displayManager.sddm.enable = true;
 
-    services.desktopManager.plasma6.enable = true;
-    environment.plasma6.excludePackages = with pkgs.kdePackages; [
-      elisa
-      ark
-      okular
-      khelpcenter
-      baloo-widgets
-      krdp
-      konsole
-      gwenview
-    ];
+      services.desktopManager.plasma6.enable = true;
+      environment.plasma6.excludePackages = with pkgs.kdePackages; [
+        elisa
+        ark
+        okular
+        khelpcenter
+        baloo-widgets
+        krdp
+        konsole
+        gwenview
+      ];
+
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   */
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
 
   programs.niri = {
     enable = true;
@@ -123,6 +123,9 @@
     podman-compose
 
     distrobox
+
+    # For niri xwayland integration
+    xwayland-satellite
 
   ];
 
@@ -189,7 +192,11 @@
     };
   };
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    OZONE_PLATFORM = "wayland";
+  };
 
   system.stateVersion = "25.11";
 }
