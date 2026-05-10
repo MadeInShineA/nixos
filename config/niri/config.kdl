@@ -1,9 +1,23 @@
 window-rule {
     // Rounded corners for a modern look.
-    geometry-corner-radius 20
-
+    geometry-corner-radius 10
+    
     // Clips window contents to the rounded corner boundaries.
     clip-to-geometry true
+}
+
+layout {
+    gaps 5
+
+    focus-ring {
+        width 1.5
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    border {
+        off
+    }
 }
 
 debug {
@@ -13,17 +27,15 @@ debug {
 
 input {
     focus-follows-mouse
+    keyboard {
+        repeat-delay 200
+        repeat-rate 50
+    }
 }
 
-spawn-at-startup "waybar"
-spawn-at-startup "hyprpaper"
+spawn-at-startup "noctalia-shell"
 
 prefer-no-csd
-
-
-environment {
-    QT_QPA_PLATFORM "wayland"
-}
 
 hotkey-overlay {
     skip-at-startup
@@ -33,6 +45,9 @@ hotkey-overlay {
 binds {
     // Show Help
     Mod+I{ show-hotkey-overlay; }
+
+    // Show overview
+    Mod+O repeat=false { toggle-overview; }
 
     // Terminal (foot)
     Mod+Return { spawn "foot"; }
@@ -49,8 +64,12 @@ binds {
     // Toggle floating
     Mod+V { toggle-window-floating; }
 
-    // App launcher (rofi)
-    Mod+D { spawn "rofi" "-show" "drun"; }
+    // App launcher (noctalia)
+    Mod+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+
+    // Fullscreen
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
 
     // Focus with vim keys
     Mod+H { focus-column-left; }
@@ -63,6 +82,9 @@ binds {
     Mod+Ctrl+J { move-window-down; }
     Mod+Ctrl+K { move-window-up; }
     Mod+Ctrl+L { move-column-right; }
+
+    Mod+Shift+J { move-window-to-workspace-down;}
+    Mod+Shift+K{ move-window-to-workspace-up;}
 
     // Workspaces 1-10
     Mod+1 { focus-workspace 1; }
@@ -88,8 +110,8 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
     Mod+Shift+0 { move-column-to-workspace 10; }
 
-    // Lock screen
-    Ctrl+Alt+L { spawn "hyprlock"; }
+    // Lock screen (noctalia)
+    Ctrl+Alt+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
 
     // Screenshot
     Print { screenshot; }
@@ -103,6 +125,9 @@ binds {
     XF86MonBrightnessUp { spawn "brightnessctl" "s" "+2%"; }
     XF86MonBrightnessDown { spawn "brightnessctl" "s" "2%-"; }
 
-    // Power menu
-    XF86PowerOff { spawn "rofi" "-show" "p" "-modi" "p:rofi-power-menu"; }
+    // Power menu (noctalia)
+    XF86PowerOff { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
 }
