@@ -16,11 +16,9 @@ let
     waybar = "waybar";
     rofi = "rofi";
     mako = "mako";
-<<<<<<< HEAD
     niri = "niri";
-=======
+    noctalia = "noctalia";
     opencode = "opencode";
->>>>>>> main
     "starship.toml" = "starship.toml";
   };
 
@@ -130,17 +128,17 @@ in
       if ($env_path | path exists) {
         # 1. Read and clean lines
         let lines = (open $env_path --raw | lines | each { |l| $l | str trim } | where { |l| $l != "" and not ($l | str starts-with "#") })
-        
+
         # 2. Parse into a record { KEY: "VALUE" }
-        let env_record = ($lines 
-          | parse "{key}={value}" 
-          | reduce -f {} { |it acc| 
+        let env_record = ($lines
+          | parse "{key}={value}"
+          | reduce -f {} { |it acc|
               let k = ($it.key | str trim)
               let v = ($it.value | str trim | str replace --all '"' "" | str replace --all "'" "")
               $acc | upsert $k $v
             }
         )
-        
+
         # 3. Load the record into the environment
         load-env $env_record
       }
@@ -249,8 +247,6 @@ in
         font_family = "JetBrainsMono Nerd Font";
       };
 
-<<<<<<< HEAD
-=======
       lsp = {
         rust-analyzer = {
           initialization_options = {
@@ -263,7 +259,6 @@ in
     };
   };
 
->>>>>>> main
   programs.helix = {
     enable = true;
     defaultEditor = true;
