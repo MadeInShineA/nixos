@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }:
 {
@@ -126,6 +127,8 @@
 
     # For niri xwayland integration
     xwayland-satellite
+
+    pkgs-unstable.noctalia-shell
 
   ];
 

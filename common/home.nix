@@ -336,10 +336,6 @@ in
     ];
   };
 
-  programs.noctalia-shell = {
-    enable = true;
-  };
-
   /*
     programs.nvf = {
       enable = true;
