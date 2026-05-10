@@ -80,6 +80,10 @@
     xwayland.enable = true;
   };
 
+  programs.niri = {
+    enable = true;
+  };
+
   # Enable distrobox
   virtualisation.podman = {
     enable = true;

@@ -1,0 +1,108 @@
+window-rule {
+    // Rounded corners for a modern look.
+    geometry-corner-radius 20
+
+    // Clips window contents to the rounded corner boundaries.
+    clip-to-geometry true
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+
+input {
+    focus-follows-mouse
+}
+
+spawn-at-startup "waybar"
+spawn-at-startup "hyprpaper"
+
+prefer-no-csd
+
+
+environment {
+    QT_QPA_PLATFORM "wayland"
+}
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+binds {
+    // Show Help
+    Mod+I{ show-hotkey-overlay; }
+
+    // Terminal (foot)
+    Mod+Return { spawn "foot"; }
+
+    // Close window
+    Mod+Q { close-window; }
+
+    // Quit niri
+    Mod+M { quit; }
+
+    // File manager (yazi)
+    Mod+E { spawn "foot" "-e" "sh" "-c" "yazi; exit"; }
+
+    // Toggle floating
+    Mod+V { toggle-window-floating; }
+
+    // App launcher (rofi)
+    Mod+D { spawn "rofi" "-show" "drun"; }
+
+    // Focus with vim keys
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
+
+    // Move window with vim keys
+    Mod+Ctrl+H { move-column-left; }
+    Mod+Ctrl+J { move-window-down; }
+    Mod+Ctrl+K { move-window-up; }
+    Mod+Ctrl+L { move-column-right; }
+
+    // Workspaces 1-10
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
+
+    // Move to workspace
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+0 { move-column-to-workspace 10; }
+
+    // Lock screen
+    Ctrl+Alt+L { spawn "hyprlock"; }
+
+    // Screenshot
+    Print { screenshot; }
+
+    // Volume
+    XF86AudioRaiseVolume { spawn "pamixer" "-i" "2"; }
+    XF86AudioLowerVolume { spawn "pamixer" "-d" "2"; }
+    XF86AudioMute { spawn "pamixer" "-t"; }
+
+    // Brightness
+    XF86MonBrightnessUp { spawn "brightnessctl" "s" "+2%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "s" "2%-"; }
+
+    // Power menu
+    XF86PowerOff { spawn "rofi" "-show" "p" "-modi" "p:rofi-power-menu"; }
+}

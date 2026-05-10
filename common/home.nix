@@ -16,7 +16,11 @@ let
     waybar = "waybar";
     rofi = "rofi";
     mako = "mako";
+<<<<<<< HEAD
+    niri = "niri";
+=======
     opencode = "opencode";
+>>>>>>> main
     "starship.toml" = "starship.toml";
   };
 
@@ -245,6 +249,8 @@ in
         font_family = "JetBrainsMono Nerd Font";
       };
 
+<<<<<<< HEAD
+=======
       lsp = {
         rust-analyzer = {
           initialization_options = {
@@ -257,6 +263,7 @@ in
     };
   };
 
+>>>>>>> main
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -333,6 +340,87 @@ in
       pkgs.codebook
     ];
   };
+
+  programs.noctalia-shell = {
+    enable = true;
+  };
+
+  /*
+    programs.nvf = {
+      enable = true;
+
+      settings = {
+        vim = {
+          telescope.enable = true;
+
+          statusline = {
+            lualine.enable = true;
+          };
+
+          filetree = {
+            neo-tree.enable = true;
+          };
+
+          autocomplete = {
+            nvim-cmp.enable = true;
+          };
+
+          git = {
+            enable = true;
+            gitsigns.enable = true;
+          };
+
+          clipboard = {
+            enable = true;
+            registers = "unnamedplus";
+          };
+
+          theme = {
+            enable = true;
+            name = "catppuccin";
+            style = "mocha";
+            transparent = true;
+          };
+
+          notify = {
+            nvim-notify.enable = true;
+          };
+
+          tabline = {
+            nvimBufferline.enable = true;
+          };
+
+          binds = {
+            whichKey.enable = true;
+            cheatsheet.enable = true;
+          };
+
+          lsp = {
+            enable = true;
+            formatOnSave = true;
+            trouble.enable = true;
+            lspSignature.enable = true;
+          };
+
+          languages = {
+            enableFormat = true;
+            enableTreesitter = true;
+            enableExtraDiagnostics = true;
+
+            nix.enable = true;
+            json.enable = true;
+            kotlin.enable = true;
+            markdown = {
+              enable = true;
+              extensions = {
+                render-markdown-nvim.enable = true;
+              };
+            };
+          };
+        };
+      };
+    };
+  */
 
   xdg.configFile = builtins.mapAttrs (name: subpath: {
     source = create_symlink "${dotfiles}/${subpath}";

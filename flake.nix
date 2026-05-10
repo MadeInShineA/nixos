@@ -10,6 +10,17 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.follows = "noctalia-qs";
+    };
+
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -17,6 +28,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      noctalia,
       ...
     }:
     {
@@ -31,16 +43,6 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-
-                sharedModules = [
-                ];
-
-                extraSpecialArgs = {
-                  pkgs-unstable = import nixpkgs-unstable {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                };
 
                 users.madeinshinea = import ./common/home.nix;
                 backupFileExtension = "backup";
@@ -61,6 +63,7 @@
                 useUserPackages = true;
 
                 sharedModules = [
+                  noctalia.homeModules.default
                 ];
 
                 extraSpecialArgs = {
