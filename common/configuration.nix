@@ -74,12 +74,11 @@
         konsole
         gwenview
       ];
-
-    programs.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
   */
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   programs.niri = {
     enable = true;
