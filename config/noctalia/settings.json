@@ -19,6 +19,8 @@
         { "id": "ScreenRecorder" },
         { "id": "Tray" },
         {
+          "deviceNativePath": "__default__",
+          "displayMode": "graphic-clean",
           "hideIfIdle": false,
           "hideIfNotDetected": false,
           "id": "Battery",
