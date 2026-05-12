@@ -35,8 +35,6 @@
     powerOnBoot = false;
   };
 
-  services.blueman.enable = true;
-
   # Enable pipewire for bluetooth sink switch
   services.pipewire.pulse.enable = true;
 
