@@ -1,7 +1,7 @@
 window-rule {
     // Rounded corners for a modern look.
     geometry-corner-radius 10
-    
+
     // Clips window contents to the rounded corner boundaries.
     clip-to-geometry true
 }
@@ -26,6 +26,7 @@ debug {
 }
 
 input {
+    disable-power-key-handling
     focus-follows-mouse
     keyboard {
         repeat-delay 200
