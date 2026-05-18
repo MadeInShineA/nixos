@@ -16,8 +16,8 @@ let
     waybar = "waybar";
     rofi = "rofi";
     mako = "mako";
-    niri = "niri";
-    noctalia = "noctalia";
+    #niri = "niri";
+    #noctalia = "noctalia";
     opencode = "opencode";
     "starship.toml" = "starship.toml";
   };

@@ -78,9 +78,11 @@
     xwayland.enable = true;
   };
 
-  programs.niri = {
-    enable = true;
-  };
+  /*
+    programs.niri = {
+      enable = true;
+    };
+  */
 
   # Enable distrobox
   virtualisation.podman = {
@@ -126,7 +128,7 @@
     xwayland-satellite
 
     # For noctalia shell
-    pkgs-unstable.noctalia-shell
+    # pkgs-unstable.noctalia-shell
 
   ];
 
