@@ -127,6 +127,9 @@
     # For niri xwayland integration
     xwayland-satellite
 
+    # For ATR
+    openconnect
+
     # For noctalia shell
     # pkgs-unstable.noctalia-shell
 

@@ -189,6 +189,7 @@ in
       "vue"
       "php"
       "nu"
+      "dockerfile"
     ];
 
     installRemoteServer = true;
