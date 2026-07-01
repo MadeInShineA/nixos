@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   lib,
   ...
 }:
@@ -11,11 +10,12 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
   configs = {
-    foot = "foot";
-    hypr = "hypr";
-    waybar = "waybar";
-    rofi = "rofi";
-    mako = "mako";
+    # foot = "foot";
+    # hypr = "hypr";
+    # waybar = "waybar";
+    # rofi = "rofi";
+    cosmic = "cosmic";
+    # mako = "mako";
     #niri = "niri";
     #noctalia = "noctalia";
     opencode = "opencode";
@@ -47,7 +47,7 @@ in
     fastfetch
     btop
 
-    yazi
+    # yazi
 
     vesktop
     telegram-desktop
@@ -57,24 +57,29 @@ in
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
 
-    wl-clipboard
+    # wl-clipboard
 
     # Nix lsp
     nixd
     nil
 
+    prismlauncher
+
     # Unstable packages
-    pkgs-unstable.jujutsu
-    pkgs-unstable.opencode
+    jujutsu
+    opencode
 
-    pkgs-unstable.zellij
+    zellij
 
-    pkgs-unstable.cherry-studio
-    pkgs-unstable.ollama
+    cherry-studio
 
-    pkgs-unstable.remnote
+    remnote
 
-    pkgs-unstable.bitwarden-desktop
+    # bitwarden-desktop
+
+    kicad-small
+
+    llama-cpp
 
   ];
 
@@ -146,14 +151,16 @@ in
 
   };
 
-  programs.swappy = {
-    enable = true;
-    settings = {
-      Default = {
-        save_dir = "${config.xdg.userDirs.pictures}";
+  /*
+    programs.swappy = {
+      enable = true;
+      settings = {
+        Default = {
+          save_dir = "${config.xdg.userDirs.pictures}";
+        };
       };
     };
-  };
+  */
 
   programs.anki = {
     enable = true;
@@ -175,8 +182,6 @@ in
 
   programs.zed-editor = {
     enable = true;
-
-    package = pkgs-unstable.zed-editor;
 
     extensions = [
       "nix"

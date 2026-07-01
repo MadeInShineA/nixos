@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 {
@@ -58,31 +57,39 @@
 
   # Desktop environment
   /*
-      services.xserver.enable = true;
-      services.displayManager.sddm.enable = true;
+        services.xserver.enable = true;
+        services.displayManager.sddm.enable = true;
 
-      services.desktopManager.plasma6.enable = true;
-      environment.plasma6.excludePackages = with pkgs.kdePackages; [
-        elisa
-        ark
-        okular
-        khelpcenter
-        baloo-widgets
-        krdp
-        konsole
-        gwenview
-      ];
+        services.desktopManager.plasma6.enable = true;
+        environment.plasma6.excludePackages = with pkgs.kdePackages; [
+          elisa
+          ark
+          okular
+          khelpcenter
+          baloo-widgets
+          krdp
+          konsole
+          gwenview
+        ];
   */
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+
+  /*
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+  */
+
+  services.desktopManager.cosmic.enable = true;
 
   /*
     programs.niri = {
       enable = true;
     };
   */
+
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.desktopManager.gnome.enable = true;
 
   # Enable distrobox
   virtualisation.podman = {
@@ -96,28 +103,28 @@
 
   environment.systemPackages = with pkgs; [
     git
-    foot
-    rofi
-    rofi-power-menu
-    waybar
+    # foot
+    # rofi
+    # rofi-power-menu
+    # waybar
 
     brave
 
-    hyprpaper
-    hyprlock
-    hypridle
+    # hyprpaper
+    # hyprlock
+    # hypridle
 
     # For audio / brightness control
-    pamixer
-    brightnessctl
+    # pamixer
+    # brightnessctl
 
     # For notifications
-    mako
-    libnotify
+    # mako
+    # libnotify
 
     # For screenshots
-    grim
-    slurp
+    # grim
+    # slurp
 
     podman-tui
     podman-compose
@@ -125,13 +132,15 @@
     distrobox
 
     # For niri xwayland integration
-    xwayland-satellite
+    # xwayland-satellite
 
     # For ATR
     openconnect
 
+    dolphin-emu
+
     # For noctalia shell
-    # pkgs-unstable.noctalia-shell
+    # noctalia-shell
 
   ];
 
@@ -177,34 +186,51 @@
 
   services.thermald.enable = true;
 
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  /*
+    services.tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 10;
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 10;
 
-      #Optional helps save long term battery health
-      START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+        #Optional helps save long term battery health
+        START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+        STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
 
+      };
     };
-  };
+  */
 
   services.upower.enable = true;
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-    OZONE_PLATFORM = "wayland";
-  };
+  /*
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+      OZONE_PLATFORM = "wayland";
+    };
+  */
+
+  # Enable Dolphin emulator controller support
+  services.udev.packages = [ pkgs.dolphin-emu ];
+
+  # Enable Dolphin emulator adapter overclocking
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.gcadapter-oc-kmod
+  ];
+
+  # to autoload at boot:
+  boot.kernelModules = [
+    "gcadapter_oc"
+  ];
 
   system.stateVersion = "25.11";
 }
