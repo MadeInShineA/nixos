@@ -82,6 +82,11 @@
 
   services.desktopManager.cosmic.enable = true;
 
+  environment.cosmic.excludePackages = with pkgs; [
+    # Default Apps
+    cosmic-edit
+
+  ];
   /*
     programs.niri = {
       enable = true;
