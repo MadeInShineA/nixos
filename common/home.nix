@@ -79,8 +79,6 @@ in
 
     kicad-small
 
-    llama-cpp
-
   ];
 
   # Universal user programs config

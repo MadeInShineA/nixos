@@ -237,5 +237,12 @@
     "gcadapter_oc"
   ];
 
+  # Enable llma-cpp
+
+  services.llama-cpp = {
+    enable = true;
+    package = pkgs.llama-cpp-rocm;
+  };
+
   system.stateVersion = "25.11";
 }
