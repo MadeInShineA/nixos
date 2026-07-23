@@ -3,15 +3,26 @@
         modifiers: [
             Super,
         ],
+        key: "slash",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "d",
+    ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+        ],
         key: "e",
     ): System(HomeFolder),
     (
         modifiers: [
             Super,
-            Ctrl,
         ],
-        key: "l",
-    ): Spawn("loginctl lock-session"),
+        key: "F11",
+    ): Disable,
     (
         modifiers: [
             Super,
@@ -23,7 +34,6 @@
         modifiers: [
             Super,
         ],
-        key: "d",
     ): System(AppLibrary),
     (
         modifiers: [
@@ -40,7 +50,8 @@
     (
         modifiers: [
             Super,
+            Ctrl,
         ],
-        key: "F11",
-    ): Disable,
+        key: "l",
+    ): Spawn("loginctl lock-session"),
 }

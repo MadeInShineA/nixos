@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -81,6 +82,13 @@
   */
 
   services.desktopManager.cosmic.enable = true;
+
+  # Disable keyring daemon
+  services.gnome.gnome-keyring.enable = false;
+
+  # Force-override PAM to prevent any module from re-enabling it
+  security.pam.services.login.enableGnomeKeyring = lib.mkForce false;
+  security.pam.services.cosmic-greeter.enableGnomeKeyring = lib.mkForce false;
 
   environment.cosmic.excludePackages = with pkgs; [
     # Default Apps

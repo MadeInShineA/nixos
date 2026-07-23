@@ -19,6 +19,14 @@
         modules = [
           ./hosts/laptop/configuration.nix
 
+          {
+            nixpkgs.overlays = [
+              (final: _prev: {
+                pnpm_10_29_2 = final.pnpm_10;
+              })
+            ];
+          }
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {

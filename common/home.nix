@@ -49,7 +49,7 @@ in
 
     # yazi
 
-    vesktop
+    # vesktop
     telegram-desktop
     qbittorrent-enhanced
 
@@ -71,13 +71,11 @@ in
 
     zellij
 
-    cherry-studio
+    # cherry-studio
 
     remnote
 
     # bitwarden-desktop
-
-    kicad-small
 
   ];
 
@@ -193,6 +191,7 @@ in
       "php"
       "nu"
       "dockerfile"
+      "scala"
     ];
 
     installRemoteServer = true;
@@ -249,6 +248,9 @@ in
 
       terminal = {
         font_family = "JetBrainsMono Nerd Font";
+        shell = {
+          program = "nu";
+        };
       };
 
       lsp = {
