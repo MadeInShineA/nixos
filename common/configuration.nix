@@ -29,6 +29,12 @@
   };
   console.keyMap = "fr_CH";
 
+  environment.sessionVariables = {
+    XKB_DEFAULT_LAYOUT = "ch";
+    XKB_DEFAULT_VARIANT = "fr";
+    XKB_DEFAULT_OPTIONS = "terminate:ctrl_alt_bksp";
+  };
+
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;

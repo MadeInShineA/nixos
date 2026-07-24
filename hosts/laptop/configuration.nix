@@ -14,18 +14,20 @@
   # boot.loader.grub.device = "/dev/vda";
   # boot.loader.grub.useOSProber = true;
 
-  # Disable touche screen
-  systemd.services.disable-touchscreen = {
+  # Disable touchscreen (ELAN9008) only
+  systemd.services.disable-touchscreen = let
+    unbindScript = pkgs.writeShellScript "unbind-touchscreen" ''
+      cd /sys/bus/hid/drivers/hid-multitouch
+      for dev in 0018:04F3:2E36.*; do
+        [ -e "$dev" ] && echo "$dev" > unbind || true
+      done
+    '';
+  in {
     description = "Disable touchscreen by unbinding from hid-multitouch";
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
-      # Unbind both detected devices
-      ExecStart = [
-        "${pkgs.coreutils}/bin/echo 0018:04F3:2E36.0004 > /sys/bus/hid/drivers/hid-multitouch/unbind"
-        "${pkgs.coreutils}/bin/echo 0018:04F3:31B9.0003 > /sys/bus/hid/drivers/hid-multitouch/unbind"
-      ];
-      # Ignore errors if a device is already unbound or missing
+      ExecStart = "${unbindScript}";
       RemainAfterExit = true;
     };
   };
