@@ -77,6 +77,11 @@ in
 
     # bitwarden-desktop
 
+    lutris
+    umu-launcher
+    winetricks
+    wineWowPackages.stable
+
   ];
 
   # Universal user programs config
