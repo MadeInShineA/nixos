@@ -33,15 +33,6 @@ in
     pictures = "${config.home.homeDirectory}/Pictures";
   };
 
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-gtk
-    ];
-  };
-
   # Universal user packages
   home.packages = with pkgs; [
     fastfetch
