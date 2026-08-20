@@ -6,4 +6,5 @@
     Pictures,
     Videos,
     Path("/home/madeinshinea/Coding"),
+    Path("/home/madeinshinea/Games"),
 ]

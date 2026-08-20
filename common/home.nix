@@ -66,12 +66,7 @@ in
 
     remnote
 
-    # bitwarden-desktop
-
-    lutris
-    umu-launcher
-    winetricks
-    wineWowPackages.stable
+    bitwarden-desktop
 
   ];
 
@@ -188,6 +183,7 @@ in
       "nu"
       "dockerfile"
       "scala"
+      "haskell"
     ];
 
     installRemoteServer = true;

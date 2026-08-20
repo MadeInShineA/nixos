@@ -254,9 +254,19 @@
 
   # Enable llma-cpp
 
-  services.llama-cpp = {
+  # Enable app image
+  programs.appimage = {
     enable = true;
-    package = pkgs.llama-cpp-rocm;
+    binfmt = true;
+
+    package = pkgs.appimage-run.override {
+      extraPkgs =
+        pkgs: with pkgs; [
+          curl
+          openssl
+          libepoxy
+        ];
+    };
   };
 
   system.stateVersion = "25.11";
