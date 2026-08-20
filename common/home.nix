@@ -40,7 +40,7 @@ in
 
     # yazi
 
-    # vesktop
+    vesktop
     telegram-desktop
     qbittorrent-enhanced
 
