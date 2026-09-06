@@ -68,6 +68,8 @@ in
 
     bitwarden-desktop
 
+    teams-for-linux
+
   ];
 
   # Universal user programs config
