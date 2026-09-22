@@ -70,6 +70,10 @@ in
 
     teams-for-linux
 
+    turbovnc
+
+    awscli
+
   ];
 
   # Universal user programs config
@@ -186,6 +190,7 @@ in
       "dockerfile"
       "scala"
       "haskell"
+      "r"
     ];
 
     installRemoteServer = true;

@@ -60,7 +60,12 @@
 
   # Packages/services
   nixpkgs.config.allowUnfree = true;
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [ networkmanager-openconnect ];
+  };
+
+  programs.nm-applet.enable = true;
 
   # Desktop environment
   /*
@@ -268,6 +273,9 @@
         ];
     };
   };
+
+  # Enable steam
+  programs.steam.enable = true;
 
   system.stateVersion = "25.11";
 }
