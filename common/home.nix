@@ -44,9 +44,11 @@ in
     telegram-desktop
     qbittorrent-enhanced
 
-    # Japanese fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
+    /*
+      # Japanese fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+    */
 
     # wl-clipboard
 
@@ -73,6 +75,10 @@ in
     turbovnc
 
     awscli
+
+    qalculate-qt
+
+    nh
 
   ];
 
@@ -142,6 +148,10 @@ in
       }
     '';
 
+    extraEnv = ''
+      $env.PATH = ($env.PATH | prepend $"($env.HOME)/.local/bin" | uniq)
+    '';
+
   };
 
   /*
@@ -191,11 +201,18 @@ in
       "scala"
       "haskell"
       "r"
+      "c"
+      "cpp"
+      "cuda"
+      "gleam"
+      "java"
     ];
 
     installRemoteServer = true;
 
     userSettings = {
+      format_on_save = "on";
+
       telemetry = {
         metrics = false;
       };
@@ -207,16 +224,12 @@ in
       debugger = {
         dock = "left";
       };
+
       project_panel = {
         dock = "left";
       };
 
-      agent_panel = {
-        dock = "right";
-      };
-
       agent = {
-        sidebar_side = "right";
         dock = "right";
       };
 
@@ -229,7 +242,7 @@ in
         };
       };
 
-      colorize_brackets = true;
+      bracket_colorization = true;
 
       theme = "Catppuccin Mocha";
       helix_mode = true;
@@ -238,6 +251,7 @@ in
         enabled = true;
         show_type_hints = true;
         show_parameter_hints = true;
+        show_other_hints = true;
       };
 
       ui_font_size = 16;
@@ -259,6 +273,13 @@ in
               command = "clippy";
             };
           };
+        };
+      };
+
+      languages = {
+        "C++" = {
+          tab_size = 2;
+          hard_tabs = false;
         };
       };
     };
