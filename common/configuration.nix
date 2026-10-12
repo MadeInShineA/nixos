@@ -33,6 +33,7 @@
     XKB_DEFAULT_LAYOUT = "ch";
     XKB_DEFAULT_VARIANT = "fr";
     XKB_DEFAULT_OPTIONS = "terminate:ctrl_alt_bksp";
+    COSMIC_DATA_CONTROL_ENABLED = "1";
   };
 
   # Enable bluetooth
@@ -257,8 +258,6 @@
     "gcadapter_oc"
   ];
 
-  # Enable llma-cpp
-
   # Enable app image
   programs.appimage = {
     enable = true;
@@ -276,6 +275,9 @@
 
   # Enable steam
   programs.steam.enable = true;
+
+  # Enable controller support
+  hardware.steam-hardware.enable = true;
 
   /*
     # Enable japanese keyboard switch

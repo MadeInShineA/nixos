@@ -8,10 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    { nixpkgs, home-manager, ... }@inputs:
     {
       nixosConfigurations.laptop-host = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -32,6 +35,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              # extraSpecialArgs = { inherit inputs; };
 
               users.madeinshinea = import ./common/home.nix;
               backupFileExtension = "backup";

@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 
@@ -24,8 +25,22 @@ let
 
 in
 {
+
+  /*
+    imports = [
+      inputs.zen-browser.homeModules.default
+    ];
+  */
+
   home.username = "madeinshinea";
   home.homeDirectory = "/home/madeinshinea";
+
+  /*
+    programs.zen-browser = {
+      enable = true;
+      env.MOZ_ENABLE_WAYLAND = "0";
+    };
+  */
 
   xdg.userDirs = {
     enable = true;
@@ -80,6 +95,18 @@ in
 
     nh
 
+    wl-clipboard
+
+    # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
+    (symlinkJoin {
+      name = "firefox";
+      paths = [ firefox ];
+      nativeBuildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/firefox --set MOZ_ENABLE_WAYLAND 0
+      '';
+    })
+
   ];
 
   # Universal user programs config
@@ -96,6 +123,8 @@ in
   programs.tmux = {
     enable = true;
   };
+
+  services.wl-clip-persist.enable = true;
 
   programs.starship = {
     enable = true;
@@ -150,6 +179,7 @@ in
 
     extraEnv = ''
       $env.PATH = ($env.PATH | prepend $"($env.HOME)/.local/bin" | uniq)
+      $env.XDG_SESSION_TYPE = "wayland"
     '';
 
   };
