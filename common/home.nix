@@ -97,6 +97,8 @@ in
 
     wl-clipboard
 
+    ares
+
     # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
     (symlinkJoin {
       name = "firefox";

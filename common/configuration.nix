@@ -126,6 +126,9 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
+  # Make Kind work with podman
+  systemd.settings.Manager.DefaultDelegate = "yes";
+
   environment.systemPackages = with pkgs; [
     git
     # foot
