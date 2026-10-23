@@ -10,6 +10,7 @@
     };
 
     # zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    claude-desktop.url = "github:aaddrick/claude-desktop-debian";
 
   };
 
@@ -24,9 +25,7 @@
 
           {
             nixpkgs.overlays = [
-              (final: _prev: {
-                pnpm_10_29_2 = final.pnpm_10;
-              })
+              inputs.claude-desktop.overlays.default
             ];
           }
 

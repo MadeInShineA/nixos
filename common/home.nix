@@ -28,7 +28,7 @@ in
 
   /*
     imports = [
-      inputs.zen-browser.homeModules.default
+      # inputs.zen-browser.homeModules.default
     ];
   */
 
@@ -73,11 +73,7 @@ in
 
     prismlauncher
 
-    # Unstable packages
-    jujutsu
     opencode
-
-    zellij
 
     # cherry-studio
 
@@ -91,13 +87,18 @@ in
 
     awscli
 
-    qalculate-qt
-
-    nh
-
     wl-clipboard
 
     ares
+
+    librewolf
+
+    azahar
+    antimicrox
+
+    # Comes from external flake
+    claude-desktop-fhs
+    claude-code
 
     # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
     (symlinkJoin {
