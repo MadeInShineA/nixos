@@ -56,7 +56,6 @@
       "podman"
       "libvirtd"
     ];
-    packages = with pkgs; [ ];
   };
 
   # Packages/services
@@ -93,8 +92,15 @@
     };
   */
 
-  services.desktopManager.cosmic.enable = true;
+  /*
+    services.desktopManager.cosmic.enable = true;
 
+    environment.cosmic.excludePackages = with pkgs; [
+      # Default Apps
+      cosmic-edit
+
+    ];
+  */
   # Disable keyring daemon
   services.gnome.gnome-keyring.enable = false;
 
@@ -102,16 +108,9 @@
   security.pam.services.login.enableGnomeKeyring = lib.mkForce false;
   security.pam.services.cosmic-greeter.enableGnomeKeyring = lib.mkForce false;
 
-  environment.cosmic.excludePackages = with pkgs; [
-    # Default Apps
-    cosmic-edit
-
-  ];
-  /*
-    programs.niri = {
-      enable = true;
-    };
-  */
+  programs.niri = {
+    enable = true;
+  };
 
   # services.xserver.displayManager.gdm.enable = true;
   # services.desktopManager.gnome.enable = true;
@@ -131,7 +130,7 @@
 
   environment.systemPackages = with pkgs; [
     git
-    # foot
+    foot
     # rofi
     # rofi-power-menu
     # waybar
@@ -143,8 +142,8 @@
     # hypridle
 
     # For audio / brightness control
-    # pamixer
-    # brightnessctl
+    pamixer
+    brightnessctl
 
     # For notifications
     # mako
@@ -154,7 +153,6 @@
     # grim
     # slurp
 
-    podman-tui
     podman-compose
 
     distrobox
@@ -162,14 +160,10 @@
     # For niri xwayland integration
     # xwayland-satellite
 
-    # For ATR
-    openconnect
+    # For noctalia shell
+    noctalia-shell
 
     dolphin-emu
-
-    # For noctalia shell
-    # noctalia-shell
-
   ];
 
   # Allow lock on lid down / up + Disable power button behavior (handled by hyprland)
@@ -213,30 +207,26 @@
   # Power management
   # services.power-profiles-daemon.enable = true;
 
-  services.thermald.enable = true;
+  # services.thermald.enable = true;
 
-  /*
-    services.tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 10;
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 10;
 
-        #Optional helps save long term battery health
-        START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-        STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
 
-      };
     };
-  */
+  };
 
   services.upower.enable = true;
 
