@@ -7,10 +7,9 @@ window-rule {
 }
 
 layout {
-    gaps 5
-
+    gaps 3
     focus-ring {
-        width 1.5
+        width 1.0
         active-color "#7fc8ff"
         inactive-color "#505050"
     }
@@ -35,6 +34,7 @@ input {
 }
 
 spawn-at-startup "noctalia-shell"
+spawn-at-startup "foot" "--server"
 
 prefer-no-csd
 
@@ -51,7 +51,10 @@ binds {
     Mod+O repeat=false { toggle-overview; }
 
     // Terminal (foot)
-    Mod+Return { spawn "foot"; }
+    Mod+Return { spawn "footclient"; }
+
+    // Librewolf
+    Mod+W { spawn "librewolf"; }
 
     // Close window
     Mod+Q { close-window; }
