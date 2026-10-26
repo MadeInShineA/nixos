@@ -47,7 +47,7 @@
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
         "contentPadding": 2,
-        "density": "default",
+        "density": "compact",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
         "fontScale": 1,
@@ -63,7 +63,7 @@
         ],
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
-        "outerCorners": true,
+        "outerCorners": false,
         "position": "top",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
@@ -71,7 +71,7 @@
         "rightClickFollowMouse": true,
         "screenOverrides": [
         ],
-        "showCapsule": true,
+        "showCapsule": false,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
@@ -117,6 +117,39 @@
                         "tooltipOption": "everything"
                     },
                     "id": "plugin:weather-indicator"
+                },
+                {
+                    "defaultSettings": {
+                        "barCycleIntervalSec": 5,
+                        "barDisplayMode": "active",
+                        "barMetric": "prompts",
+                        "providers": {
+                            "claude": {
+                                "credentialsPath": "~/.claude/.credentials.json",
+                                "enabled": false,
+                                "statsPath": "~/.claude/stats-cache.json"
+                            },
+                            "codex": {
+                                "enabled": false
+                            },
+                            "copilot": {
+                                "enabled": false
+                            },
+                            "gemini": {
+                                "enabled": false
+                            },
+                            "openrouter": {
+                                "apiKey": "",
+                                "enabled": false
+                            },
+                            "zen": {
+                                "apiKey": "",
+                                "enabled": false
+                            }
+                        },
+                        "refreshIntervalSec": 30
+                    },
+                    "id": "plugin:model-usage"
                 }
             ],
             "left": [
@@ -172,6 +205,14 @@
             ],
             "right": [
                 {
+                    "hideWhenZero": false,
+                    "hideWhenZeroUnread": false,
+                    "iconColor": "none",
+                    "id": "NotificationHistory",
+                    "showUnreadBadge": true,
+                    "unreadBadgeColor": "primary"
+                },
+                {
                     "blacklist": [
                     ],
                     "chevronColor": "none",
@@ -184,43 +225,12 @@
                 },
                 {
                     "defaultSettings": {
-                        "colorHistory": [
-                        ],
-                        "detectedRecorder": "",
-                        "filenameFormat": "",
-                        "gifMaxSeconds": 30,
-                        "installedLangs": [
-                            "eng"
-                        ],
-                        "paletteColors": [
-                        ],
-                        "recordCopyToClipboard": false,
-                        "recordSkipConfirmation": false,
-                        "screenshotPath": "",
-                        "selectedOcrLang": "eng",
-                        "transAvailable": false,
-                        "videoPath": ""
+                        "connectedColor": "primary",
+                        "disableToastNotifications": false,
+                        "disconnectedColor": "none",
+                        "displayMode": "onhover"
                     },
-                    "id": "plugin:screen-toolkit"
-                },
-                {
-                    "displayMode": "onhover",
-                    "iconColor": "none",
-                    "id": "Volume",
-                    "middleClickCommand": "pwvucontrol || pavucontrol",
-                    "textColor": "none"
-                },
-                {
-                    "displayMode": "onhover",
-                    "iconColor": "none",
-                    "id": "Bluetooth",
-                    "textColor": "none"
-                },
-                {
-                    "displayMode": "onhover",
-                    "iconColor": "none",
-                    "id": "Network",
-                    "textColor": "none"
+                    "id": "plugin:network-manager-vpn"
                 },
                 {
                     "defaultSettings": {
@@ -243,30 +253,32 @@
                     "id": "plugin:tailscale"
                 },
                 {
-                    "defaultSettings": {
-                        "connectedColor": "primary",
-                        "disableToastNotifications": false,
-                        "disconnectedColor": "none",
-                        "displayMode": "onhover"
-                    },
-                    "id": "plugin:network-manager-vpn"
+                    "displayMode": "onhover",
+                    "iconColor": "none",
+                    "id": "Bluetooth",
+                    "textColor": "none"
+                },
+                {
+                    "displayMode": "onhover",
+                    "iconColor": "none",
+                    "id": "Network",
+                    "textColor": "none"
+                },
+                {
+                    "displayMode": "onhover",
+                    "iconColor": "none",
+                    "id": "Volume",
+                    "middleClickCommand": "pwvucontrol || pavucontrol",
+                    "textColor": "none"
                 },
                 {
                     "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
+                    "displayMode": "graphic",
                     "hideIfIdle": false,
                     "hideIfNotDetected": false,
                     "id": "Battery",
                     "showNoctaliaPerformance": true,
                     "showPowerProfiles": true
-                },
-                {
-                    "hideWhenZero": false,
-                    "hideWhenZeroUnread": false,
-                    "iconColor": "none",
-                    "id": "NotificationHistory",
-                    "showUnreadBadge": true,
-                    "unreadBadgeColor": "primary"
                 },
                 {
                     "colorizeDistroLogo": false,
@@ -276,7 +288,7 @@
                     "enableColorization": false,
                     "icon": "noctalia",
                     "id": "ControlCenter",
-                    "useDistroLogo": false
+                    "useDistroLogo": true
                 }
             ]
         }
@@ -424,7 +436,7 @@
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
-        "animationDisabled": false,
+        "animationDisabled": true,
         "animationSpeed": 1,
         "autoStartAuth": false,
         "avatarImage": "/home/madeinshinea/.face",
@@ -500,17 +512,17 @@
     },
     "idle": {
         "customCommands": "[]",
-        "enabled": false,
+        "enabled": true,
         "fadeDuration": 5,
         "lockCommand": "",
-        "lockTimeout": 300,
+        "lockTimeout": 120,
         "resumeLockCommand": "",
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
         "screenOffCommand": "",
-        "screenOffTimeout": 100,
+        "screenOffTimeout": 60,
         "suspendCommand": "",
-        "suspendTimeout": 1800
+        "suspendTimeout": 1734
     },
     "location": {
         "analogClockInCalendar": false,
@@ -518,7 +530,7 @@
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Kyoto",
+        "name": "Lausanne",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": false,
