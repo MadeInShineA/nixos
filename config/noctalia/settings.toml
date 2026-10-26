@@ -1,0 +1,178 @@
+config_version = 14
+
+[audio]
+enable_sounds = false
+
+[bar.default]
+center = [ "weather", "clock", "widget", "media" ]
+end = [ "tray", "notifications", "network", "bluetooth", "volume", "battery", "caffeine", "control-center" ]
+font_family = "JetBrainsMono Nerd Font"
+layer = "overlay"
+margin_ends = 0
+radius = 0
+start = [ "cpu", "ram", "temp" ]
+
+[control_center]
+sidebar = "full"
+sidebar_section = "none"
+
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+    [[control_center.shortcuts]]
+    type = "bluetooth"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "nightlight"
+
+    [[control_center.shortcuts]]
+    type = "notification"
+
+[desktop_widgets]
+enabled = false
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+pre_action_fade_seconds = 0
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = false
+    timeout = 60.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 600.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = false
+    timeout = 120.0
+
+[location]
+address = "Lausanne"
+
+[lockscreen]
+fingerprint = false
+transition = []
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 128.0
+    box_width = 810.0
+    cx = 823.0
+    cy = 848.5
+    output = "eDP-1"
+    placement_height = 1029.0
+    placement_width = 1646.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = false
+        show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 823.0
+    cy = 514.5
+    output = "eDP-1"
+    placement_height = 1029.0
+    placement_width = 1646.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        format = "{:%H:%M:%S}"
+
+[notification]
+history_retention_hours = 1
+offset_x = 0
+offset_y = 4
+
+[plugins]
+enabled = [ "thepunkoff/pomodoro" ]
+
+[shell]
+panel_anchor_bar = "default"
+screen_time_enabled = true
+
+    [shell.launcher]
+    categories = false
+    fetch_exchange_rates = false
+
+    [shell.panel]
+    open_near_click_control_center = true
+    session_placement = "floating"
+    session_position = "center"
+
+    [shell.screenshot]
+    annotate = true
+    confirm_region = true
+
+[theme]
+builtin = "Tokyo-Night"
+
+[wallpaper]
+directory = "/home/madeinshinea/nixos/config/noctalia/walls"
+
+    [wallpaper.default]
+    path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
+
+    [wallpaper.last]
+    path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
+
+[widget.cpu]
+visualization = "none"
+
+[widget.media]
+hide_album_art = true
+hide_artist = true
+hide_when_no_media = true
+max_length = 200
+title_scroll = "on_hover"
+
+[widget.network]
+show_label = false
+
+[widget.ram]
+stat = "ram_pct"
+visualization = "none"
+
+[widget.sysmon]
+visualization = "none"
+
+[widget.temp]
+visualization = "none"
+
+[widget.weather]
+show_condition = false
+
+[widget.widget]
+type = "thepunkoff/pomodoro:widget"

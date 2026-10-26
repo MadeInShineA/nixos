@@ -1,0 +1,8 @@
+# runtime state / caches written by noctalia
+plugins/sources/
+plugin-cache/
+notification_history.json
+notification_history_assets/
+screen_time.json
+usage_counts.json
+recently_used.json

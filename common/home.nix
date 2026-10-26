@@ -478,5 +478,7 @@ in
     recursive = true;
   }) configs;
 
+  xdg.stateFile.noctalia.source = create_symlink "${dotfiles}/noctalia";
+
   home.stateVersion = "25.11";
 }

@@ -158,10 +158,11 @@
     distrobox
 
     # For niri xwayland integration
-    # xwayland-satellite
+    xwayland-satellite
 
     # For noctalia shell
-    noctalia-shell
+    # noctalia-shell
+    noctalia
 
     dolphin-emu
   ];
