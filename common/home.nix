@@ -11,16 +11,17 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
   configs = {
-    # foot = "foot";
+    foot = "foot";
     # hypr = "hypr";
     # waybar = "waybar";
     # rofi = "rofi";
     cosmic = "cosmic";
     # mako = "mako";
-    #niri = "niri";
-    #noctalia = "noctalia";
+    niri = "niri";
+    noctalia = "noctalia";
     opencode = "opencode";
     "starship.toml" = "starship.toml";
+    "mimeapps.list" = "mimeapps.list";
   };
 
 in
@@ -53,7 +54,7 @@ in
     fastfetch
     btop
 
-    # yazi
+    yazi
 
     vesktop
     telegram-desktop
