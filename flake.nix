@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Separate nixpkgs pin so noctalia can be updated on its own
+    nixpkgs-noctalia.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +29,9 @@
           {
             nixpkgs.overlays = [
               inputs.claude-desktop.overlays.default
+              (final: prev: {
+                noctalia = inputs.nixpkgs-noctalia.legacyPackages.${prev.stdenv.hostPlatform.system}.noctalia;
+              })
             ];
           }
 

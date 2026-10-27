@@ -1,11 +1,15 @@
-config_version = 14
+config_version = 15
 
 [audio]
-enable_sounds = false
+enable_notification_sounds = false
+enable_overdrive = false
+enable_power_sounds = false
+enable_screenshot_sounds = true
+enable_sounds = true
 
 [bar.default]
 center = [ "weather", "clock", "widget", "media" ]
-end = [ "tray", "notifications", "network", "bluetooth", "volume", "battery", "caffeine", "control-center" ]
+end = [ "notifications", "tray", "network", "bluetooth", "volume", "battery", "caffeine", "control-center" ]
 font_family = "JetBrainsMono Nerd Font"
 layer = "top"
 margin_ends = 0
@@ -13,8 +17,12 @@ radius = 0
 start = [ "cpu", "ram", "temp" ]
 
 [control_center]
-sidebar = "full"
+sidebar = "compact"
 sidebar_section = "none"
+width = 850
+
+    [control_center.calendar]
+    show_events_card = false
 
     [[control_center.shortcuts]]
     type = "wifi"
@@ -122,12 +130,20 @@ enabled = [ "thepunkoff/pomodoro" ]
 [shell]
 panel_anchor_bar = "default"
 screen_time_enabled = true
+show_location = true
 
     [shell.launcher]
     categories = false
+    category_icons_only = true
+    default_view = "all"
     fetch_exchange_rates = false
+    search_position = "top"
+    show_icons = true
+    show_session_button = false
+    show_settings_button = false
 
     [shell.panel]
+    launcher_placement = "floating"
     open_near_click_control_center = true
     session_placement = "floating"
     session_position = "center"
@@ -138,6 +154,10 @@ screen_time_enabled = true
 
 [theme]
 builtin = "Tokyo-Night"
+community_palette = "Tokyo Night Storm"
+pure_black_dark = true
+source = "builtin"
+sync_color_scheme = true
 
 [wallpaper]
 directory = "/home/madeinshinea/nixos/config/noctalia/walls"
@@ -147,6 +167,9 @@ directory = "/home/madeinshinea/nixos/config/noctalia/walls"
 
     [wallpaper.last]
     path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
+
+[widget.clock]
+anchor = true
 
 [widget.cpu]
 visualization = "none"
