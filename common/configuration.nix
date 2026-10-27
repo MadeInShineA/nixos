@@ -164,6 +164,9 @@
     # noctalia-shell
     noctalia
 
+    # GTK3 theme (noctalia switches between adw-gtk3 / adw-gtk3-dark)
+    adw-gtk3
+
     dolphin-emu
   ];
 
