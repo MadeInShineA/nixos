@@ -8,7 +8,7 @@ enable_screenshot_sounds = true
 enable_sounds = true
 
 [bar.default]
-center = [ "weather", "clock", "widget", "media" ]
+center = [ "weather", "clock", "widget", "media", "pulse" ]
 end = [ "notifications", "tray", "network", "bluetooth", "volume", "battery", "caffeine", "control-center" ]
 font_family = "JetBrainsMono Nerd Font"
 layer = "top"
@@ -155,7 +155,9 @@ show_location = true
 [theme]
 builtin = "Tokyo-Night"
 community_palette = "Tokyo Night Storm"
+mode = "dark"
 pure_black_dark = true
+shell_mode = "follow"
 source = "builtin"
 sync_color_scheme = true
 
@@ -183,6 +185,9 @@ title_scroll = "on_hover"
 
 [widget.network]
 show_label = false
+
+[widget.pulse]
+type = "lowcache/claude-companion:pulse"
 
 [widget.ram]
 stat = "ram_pct"
