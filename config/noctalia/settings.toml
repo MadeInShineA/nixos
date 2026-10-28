@@ -8,7 +8,7 @@ enable_screenshot_sounds = true
 enable_sounds = true
 
 [bar.default]
-center = [ "weather", "clock", "widget", "media", "pulse" ]
+center = [ "weather", "clock", "widget", "bar", "media", "pulse" ]
 end = [ "notifications", "tray", "network", "bluetooth", "volume", "battery", "caffeine", "control-center" ]
 font_family = "JetBrainsMono Nerd Font"
 layer = "top"
@@ -129,7 +129,7 @@ panel_open_near_click = true
 use-bundled-alarm-sound = true
 
 [plugins]
-enabled = [ "thepunkoff/pomodoro" ]
+enabled = [ "thepunkoff/pomodoro", "noctalia/timer" ]
 
 [shell]
 panel_anchor_bar = "default"
@@ -173,6 +173,9 @@ directory = "/home/madeinshinea/nixos/config/noctalia/walls"
 
     [wallpaper.last]
     path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
+
+[widget.bar]
+type = "noctalia/timer:bar"
 
 [widget.clock]
 anchor = true

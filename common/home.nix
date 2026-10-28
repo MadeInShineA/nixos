@@ -101,6 +101,8 @@ in
     claude-desktop-fhs
     claude-code
 
+    stremio-linux-shell
+
     # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
     (symlinkJoin {
       name = "firefox";
