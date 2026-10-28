@@ -124,6 +124,10 @@ history_retention_hours = 1
 offset_x = 0
 offset_y = 4
 
+[plugin_settings."thepunkoff/pomodoro"]
+panel_open_near_click = true
+use-bundled-alarm-sound = true
+
 [plugins]
 enabled = [ "thepunkoff/pomodoro" ]
 
@@ -172,6 +176,7 @@ directory = "/home/madeinshinea/nixos/config/noctalia/walls"
 
 [widget.clock]
 anchor = true
+format = "{:%H:%M}"
 
 [widget.cpu]
 visualization = "none"

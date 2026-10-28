@@ -34,6 +34,8 @@
     XKB_DEFAULT_VARIANT = "fr";
     XKB_DEFAULT_OPTIONS = "terminate:ctrl_alt_bksp";
     COSMIC_DATA_CONTROL_ENABLED = "1";
+    # Java/Swing apps (e.g. TurboVNC viewer) render blank under niri's xwayland-satellite
+    _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
   # Enable bluetooth
