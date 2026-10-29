@@ -8,13 +8,14 @@ enable_screenshot_sounds = true
 enable_sounds = true
 
 [bar.default]
+capsule_group = []
 center = [ "weather", "clock", "widget", "bar", "media", "pulse" ]
 end = [ "notifications", "tray", "network", "bluetooth", "volume", "battery", "caffeine", "control-center" ]
 font_family = "JetBrainsMono Nerd Font"
 layer = "top"
 margin_ends = 0
 radius = 0
-start = [ "cpu", "ram", "temp" ]
+start = [ "cpu", "gpu_usage", "ram", "temp", "gpu_temp", "disk_space" ]
 
 [control_center]
 sidebar = "compact"
@@ -48,17 +49,17 @@ pre_action_fade_seconds = 0
 
     [idle.behavior.lock]
     action = "lock"
-    enabled = false
+    enabled = true
     timeout = 60.0
 
     [idle.behavior.lock-and-suspend]
     action = "lock_and_suspend"
-    enabled = false
+    enabled = true
     timeout = 600.0
 
     [idle.behavior.screen-off]
     action = "screen_off"
-    enabled = false
+    enabled = true
     timeout = 120.0
 
 [location]
@@ -184,6 +185,21 @@ format = "{:%H:%M}"
 [widget.cpu]
 visualization = "none"
 
+[widget.disk_space]
+stat = "disk_free"
+type = "sysmon"
+visualization = "none"
+
+[widget.gpu_temp]
+stat = "gpu_temp"
+type = "sysmon"
+visualization = "none"
+
+[widget.gpu_usage]
+stat = "gpu_usage"
+type = "sysmon"
+visualization = "none"
+
 [widget.media]
 hide_album_art = true
 hide_artist = true
@@ -202,6 +218,7 @@ stat = "ram_pct"
 visualization = "none"
 
 [widget.sysmon]
+stat = "gpu_usage"
 visualization = "none"
 
 [widget.temp]
