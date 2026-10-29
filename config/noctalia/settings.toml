@@ -9,7 +9,7 @@ enable_sounds = true
 
 [bar.default]
 capsule_group = []
-center = [ "weather", "clock", "widget", "bar", "media", "pulse" ]
+center = [ "weather", "clock", "widget", "media", "pulse" ]
 end = [ "notifications", "tray", "network", "bluetooth", "volume", "battery", "caffeine", "control-center" ]
 font_family = "JetBrainsMono Nerd Font"
 layer = "top"
@@ -175,9 +175,6 @@ directory = "/home/madeinshinea/nixos/config/noctalia/walls"
     [wallpaper.last]
     path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
 
-[widget.bar]
-type = "noctalia/timer:bar"
-
 [widget.clock]
 anchor = true
 format = "{:%H:%M}"
@@ -229,3 +226,5 @@ show_condition = false
 
 [widget.widget]
 type = "thepunkoff/pomodoro:widget"
+widget-glyph-main = "alarm"
+widget-glyph-work = "sword"
