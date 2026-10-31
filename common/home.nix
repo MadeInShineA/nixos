@@ -334,6 +334,7 @@ in
         with pkgs.vscode-extensions;
         [
           jnoortheen.nix-ide
+          mkhl.direnv
           catppuccin.catppuccin-vsc
           catppuccin.catppuccin-vsc-icons
           quarto.quarto
@@ -389,6 +390,8 @@ in
             path = "nu";
           };
         };
+
+        "direnv.restart.automatic" = true;
 
         "rust-analyzer.check.command" = "clippy";
 
