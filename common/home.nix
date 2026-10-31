@@ -46,6 +46,7 @@ in
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+    setSessionVariables = true;
     pictures = "${config.home.homeDirectory}/Pictures";
   };
 
@@ -322,9 +323,8 @@ in
     };
   };
 
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
-    package = pkgs.vscodium;
 
     profiles.default = {
       enableUpdateCheck = false;
