@@ -1,0 +1,3 @@
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ "plugin wl-clipboard", "yank" ]

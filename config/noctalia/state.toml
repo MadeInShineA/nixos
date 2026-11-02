@@ -12,7 +12,7 @@ color_move = "0.96,0.2,0.28,1"
 color_numbering = "0.96,0.2,0.28,1"
 color_rectangle = "0.96,0.2,0.28,1"
 color_text = "0.96,0.2,0.28,1"
-fill = "0"
+fill = "off"
 tool = "text"
 toolbar_positions = "{}"
 width_arrow = "6"
@@ -33,3 +33,4 @@ calendar_credentials_v1 = true
 
 [theme_templates]
 applied_builtin_ids = ""
+applied_community_ids = ""

@@ -20,6 +20,7 @@ let
     niri = "niri";
     noctalia = "noctalia";
     opencode = "opencode";
+    yazi = "yazi";
     "starship.toml" = "starship.toml";
     "mimeapps.list" = "mimeapps.list";
   };
@@ -106,6 +107,9 @@ in
 
     # For screen recording
     slurp
+
+    # For yazi built-ins
+    zoxide
 
     # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
     (symlinkJoin {

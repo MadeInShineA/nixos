@@ -43,6 +43,7 @@ audio/flac=librewolf.desktop
 audio/wav=librewolf.desktop
 x-scheme-handler/discord-1345366770436800533=discord-1345366770436800533.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+x-scheme-handler/remnote=remnote.desktop
 
 [Added Associations]
 x-scheme-handler/tg=org.telegram.desktop.desktop;
