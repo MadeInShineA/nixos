@@ -36,6 +36,8 @@
     COSMIC_DATA_CONTROL_ENABLED = "1";
     # Java/Swing apps (e.g. TurboVNC viewer) render blank under niri's xwayland-satellite
     _JAVA_AWT_WM_NONREPARENTING = "1";
+    # Fallback for xdg-open on file types with no default (otherwise picks firefox)
+    BROWSER = "librewolf";
   };
 
   # Enable bluetooth
