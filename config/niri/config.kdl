@@ -137,6 +137,10 @@ binds {
     // Screenshot
     Print { spawn-sh "noctalia msg screenshot-region"; }
 
+    // Screen recording (noctalia screen_recorder plugin), press again to stop
+    Mod+Print { spawn-sh "noctalia msg plugin noctalia/screen_recorder:service all toggle portal"; }
+    Mod+Shift+Print { spawn-sh "noctalia msg plugin noctalia/screen_recorder:service all toggle region"; }
+
     // Volume
     XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up"; }
     XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }

@@ -114,6 +114,9 @@
     enable = true;
   };
 
+  # For noctalia screen recorder plugin (installs gpu-screen-recorder + gsr-kms-server setcap wrapper)
+  programs.gpu-screen-recorder.enable = true;
+
   # services.xserver.displayManager.gdm.enable = true;
   # services.desktopManager.gnome.enable = true;
 

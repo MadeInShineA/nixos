@@ -104,6 +104,9 @@ in
 
     stremio-linux-shell
 
+    # For screen recording
+    slurp
+
     # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
     (symlinkJoin {
       name = "firefox";
