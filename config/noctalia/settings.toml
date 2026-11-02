@@ -155,7 +155,7 @@ offset_x = 0
 offset_y = 4
 
 [plugin_settings."noctalia/screen_recorder"]
-video_source = "region"
+video_source = "portal"
 
 [plugin_settings."thepunkoff/pomodoro"]
 panel_open_near_click = true
