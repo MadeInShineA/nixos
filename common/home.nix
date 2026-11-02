@@ -87,7 +87,7 @@ in
 
     turbovnc
 
-    awscli
+    # awscli
 
     wl-clipboard
 
