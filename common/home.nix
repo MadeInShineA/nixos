@@ -111,6 +111,8 @@ in
     # For yazi built-ins
     zoxide
 
+    gh
+
     # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
     (symlinkJoin {
       name = "firefox";
@@ -287,8 +289,6 @@ in
         };
       };
 
-      bracket_colorization = true;
-
       theme = "Catppuccin Mocha";
       helix_mode = true;
 
@@ -297,6 +297,12 @@ in
         show_type_hints = true;
         show_parameter_hints = true;
         show_other_hints = true;
+      };
+
+      diagnostics.inline = {
+        enabled = true;
+        max_severity = "warning";
+
       };
 
       ui_font_size = 16;
@@ -421,8 +427,11 @@ in
 
       editor.bufferline = "multiple";
       editor.line-number = "relative";
-      editor.inline-diagnostics.cursor-line = "warning";
-      editor.inline-diagnostics.other-lines = "warning";
+      editor.inline-diagnostics = {
+        cursor-line = "warning";
+        other-lines = "warning";
+      };
+
       editor.cursor-shape = {
         normal = "block";
         insert = "bar";
