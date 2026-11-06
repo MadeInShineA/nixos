@@ -53,7 +53,6 @@ in
 
   # Universal user packages
   home.packages = with pkgs; [
-    fastfetch
     btop
 
     yazi
@@ -112,6 +111,10 @@ in
     zoxide
 
     gh
+    nh
+    nitch
+
+    p7zip
 
     # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
     (symlinkJoin {
@@ -191,13 +194,15 @@ in
         # 3. Load the record into the environment
         load-env $env_record
       }
+
+      # Run yazi with a POSIX SHELL so its `shell` commands (e.g. extraction) work
+      def --env yazi [...args] { with-env { SHELL: "bash" } { ^yazi ...$args } }
     '';
 
     extraEnv = ''
       $env.PATH = ($env.PATH | prepend $"($env.HOME)/.local/bin" | uniq)
       $env.XDG_SESSION_TYPE = "wayland"
     '';
-
   };
 
   /*

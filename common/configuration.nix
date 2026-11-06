@@ -213,6 +213,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     wqy_microhei
+    noto-fonts
   ];
 
   # Power management
@@ -273,6 +274,7 @@
           curl
           openssl
           libepoxy
+          libgpg-error
         ];
     };
   };

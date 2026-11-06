@@ -1,3 +1,19 @@
 [[mgr.prepend_keymap]]
 on  = "y"
 run = [ "plugin wl-clipboard", "yank" ]
+
+[[mgr.prepend_keymap]]
+on   = "Z"
+run  = '''shell -- bash -c '
+if [ $# -le 1 ]; then
+  name=$(basename "$1")
+else
+  name=$(basename "$PWD")
+fi
+rm -f "$name.zip" && 7z a "$name.zip" "$@"' sh %s'''
+desc = "Zip selection (named after file or folder)"
+
+[[mgr.prepend_keymap]]
+on   = "X"
+run  = '''shell -- bash -c 'd=$(basename "$1"); d="${d%.*}"; 7z x -aoa "$1" -o"$d"' sh %h'''
+desc = "Extract archive into named folder"
