@@ -59,7 +59,15 @@ in
 
     vesktop
     telegram-desktop
-    qbittorrent-enhanced
+    # qBittorrent with python3 on its PATH only (needed for search plugins)
+    (symlinkJoin {
+      name = "qbittorrent-enhanced";
+      paths = [ qbittorrent-enhanced ];
+      nativeBuildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/qbittorrent --prefix PATH : ${python3}/bin
+      '';
+    })
 
     /*
       # Japanese fonts
