@@ -20,6 +20,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Neovim configured as Nix options
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";
 
     # Horizon: Minecraft Java Edition rewritten in Rust (https://playhorizon.dev)
