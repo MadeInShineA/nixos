@@ -15,6 +15,12 @@
     # zen-browser.url = "github:0xc000022070/zen-browser-flake";
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";
 
+    # Horizon: Minecraft Java Edition rewritten in Rust (https://playhorizon.dev)
+    horizon = {
+      url = "github:horizon-rust/horizon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -29,6 +35,7 @@
           {
             nixpkgs.overlays = [
               inputs.claude-desktop.overlays.default
+              inputs.horizon.overlays.default
               (final: prev: {
                 noctalia = inputs.nixpkgs-noctalia.legacyPackages.${prev.stdenv.hostPlatform.system}.noctalia;
               })

@@ -82,6 +82,7 @@ in
     nil
 
     prismlauncher
+    horizon-launcher
 
     opencode
 
@@ -123,6 +124,8 @@ in
     nitch
 
     p7zip
+
+    thunderbird
 
     # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
     (symlinkJoin {
@@ -223,24 +226,6 @@ in
       };
     };
   */
-
-  programs.anki = {
-    enable = true;
-    theme = "dark";
-
-    addons = with pkgs.ankiAddons; [
-      (anki-connect.withConfig {
-        config = {
-          webCorsOriginList = [
-            "http://localhost"
-            "http://localhost:8765"
-            "http://localhost:3000"
-            "https://app.asbplayer.dev"
-          ];
-        };
-      })
-    ];
-  };
 
   programs.zed-editor = {
     enable = true;
@@ -455,10 +440,12 @@ in
 
     languages = {
       language-server = {
-        codebook = {
-          command = "codebook-lsp";
-          args = [ "serve" ];
-        };
+        /*
+          codebook = {
+            command = "codebook-lsp";
+            args = [ "serve" ];
+          };
+        */
       };
 
       language = [
@@ -489,7 +476,7 @@ in
           };
           language-servers = [
             "marksman"
-            "codebook"
+            # "codebook"
           ];
           file-types = [
             "md"
@@ -508,7 +495,6 @@ in
 
     extraPackages = [
       pkgs.simple-completion-language-server
-      pkgs.codebook
     ];
   };
 

@@ -142,8 +142,6 @@
     # rofi-power-menu
     # waybar
 
-    brave
-
     # hyprpaper
     # hyprlock
     # hypridle
@@ -212,8 +210,6 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-    wqy_microhei
-    noto-fonts
   ];
 
   # Power management

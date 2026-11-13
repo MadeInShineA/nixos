@@ -45,6 +45,10 @@ x-scheme-handler/discord-1345366770436800533=discord-1345366770436800533.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 x-scheme-handler/remnote=remnote.desktop
 x-scheme-handler/ton=org.telegram.desktop.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-1JXMY3.desktop
+x-scheme-handler/mid=userapp-Thunderbird-1JXMY3.desktop
+message/rfc822=userapp-Thunderbird-1JXMY3.desktop
+x-scheme-handler/net.thunderbird=userapp-Thunderbird-I7COY3.desktop
 
 [Added Associations]
 x-scheme-handler/tg=org.telegram.desktop.desktop;
@@ -60,3 +64,7 @@ application/xhtml+xml=librewolf.desktop;
 application/x-extension-xhtml=librewolf.desktop;
 application/x-extension-xht=librewolf.desktop;
 x-scheme-handler/ton=org.telegram.desktop.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-1JXMY3.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-1JXMY3.desktop;
+message/rfc822=userapp-Thunderbird-1JXMY3.desktop;
+x-scheme-handler/net.thunderbird=userapp-Thunderbird-I7COY3.desktop;
