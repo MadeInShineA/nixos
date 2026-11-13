@@ -88,6 +88,15 @@ in
             vim.lsp.enable(name)
           end
         end
+
+        -- Inlay hints are requested once on attach, while the server is still
+        -- indexing (empty result). Re-request them when it finishes some work.
+        vim.api.nvim_create_autocmd("LspProgress", {
+          pattern = "end",
+          callback = function(ev)
+            vim.lsp.handlers["workspace/inlayHint/refresh"](nil, nil, { client_id = ev.data.client_id, method = "workspace/inlayHint/refresh" })
+          end,
+        })
       '';
 
       keymaps = [

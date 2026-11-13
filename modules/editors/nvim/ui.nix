@@ -37,6 +37,17 @@
       # Popup listing available keybindings after pressing a prefix (e.g. Space)
       which-key = {
         enable = true;
+        settings.spec = [
+          # Shorten the built-in gx description
+          {
+            __unkeyed-1 = "gx";
+            desc = "Open with system app";
+            mode = [
+              "n"
+              "x"
+            ];
+          }
+        ];
       };
 
       # Vertical indentation guides
