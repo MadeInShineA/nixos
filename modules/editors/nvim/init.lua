@@ -192,6 +192,7 @@ map("n", "<leader>h", function()
 end, { desc = "Toggle inlay hints" })
 
 map({ "n", "t" }, "<C-\\>", "<cmd>ToggleTerm<cr>", { desc = "Terminal" })
+map("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Terminal normal mode" })
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<leader>x", function() MiniBufremove.delete() end, { desc = "Close buffer" })
