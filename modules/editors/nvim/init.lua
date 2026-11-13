@@ -75,8 +75,11 @@ local telescope = require("telescope")
 telescope.setup({})
 telescope.load_extension("fzf")
 
--- Terminal running nushell
-require("toggleterm").setup({ shell = "nu", direction = "float" })
+-- Terminal running nushell (falls back to the default shell where nu isn't installed)
+require("toggleterm").setup({
+  shell = vim.fn.executable("nu") == 1 and "nu" or vim.o.shell,
+  direction = "float",
+})
 
 -- Treesitter (grammars from nix) ---------------------------------------
 vim.api.nvim_create_autocmd("FileType", {
