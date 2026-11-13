@@ -132,6 +132,9 @@ local servers = {
   "jdtls",         -- java
   "gopls",         -- go
   "rust_analyzer", -- rust
+  "ruff",          -- python (lint + format)
+  "basedpyright",  -- python (types)
+  "pyright",       -- python (types, if basedpyright isn't available)
   "lua_ls",        -- lua
   "marksman",      -- markdown
 }
