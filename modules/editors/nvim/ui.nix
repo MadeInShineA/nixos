@@ -5,7 +5,7 @@
       enable = true;
       settings = {
         flavour = "mocha";
-        transparent_background = false;
+        transparent_background = true;
       };
     };
 
@@ -25,13 +25,15 @@
       # Open buffers shown as tabs at the top
       bufferline = {
         enable = true;
-        settings.options.offsets = [
-          {
-            filetype = "neo-tree";
-            text = "Files";
-            separator = true;
-          }
-        ];
+        settings.options = {
+          offsets = [
+            {
+              filetype = "neo-tree";
+              text = "Files";
+              separator = true;
+            }
+          ];
+        };
       };
 
       # Popup listing available keybindings after pressing a prefix (e.g. Space)
@@ -48,6 +50,13 @@
             ];
           }
         ];
+      };
+
+      # Virtual-text hints showing where motions (w, b, e, $, ^, %...) would jump
+      precognition = {
+        enable = true;
+        # Hide the noisy f/F/t/T target hints
+        settings.targetedMotionHints.enabled = false;
       };
 
       # Vertical indentation guides
