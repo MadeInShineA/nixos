@@ -81,13 +81,18 @@ in
       };
 
       # ... then start only the ones whose binary is available
+      # (re-run when the environment changes, e.g. by ./direnv.nix)
       lsp.luaConfig.post = ''
-        for _, name in ipairs(${lib.nixvim.toLuaObject servers}) do
-          local cmd = vim.lsp.config[name] and vim.lsp.config[name].cmd
-          if type(cmd) == "function" or (type(cmd) == "table" and vim.fn.executable(cmd[1]) == 1) then
-            vim.lsp.enable(name)
+        function _G.enable_available_lsp_servers()
+          for _, name in ipairs(${lib.nixvim.toLuaObject servers}) do
+            local cmd = vim.lsp.config[name] and vim.lsp.config[name].cmd
+            if not vim.lsp.is_enabled(name)
+              and (type(cmd) == "function" or (type(cmd) == "table" and vim.fn.executable(cmd[1]) == 1)) then
+              vim.lsp.enable(name)
+            end
           end
         end
+        _G.enable_available_lsp_servers()
 
         -- Inlay hints are requested once on attach, while the server is still
         -- indexing (empty result). Re-request them when it finishes some work.
