@@ -10,6 +10,15 @@
         folding.enable = true;
       };
 
+      # Pin the enclosing function / class / block header at the top while scrolling
+      treesitter-context = {
+        enable = true;
+        settings.max_lines = 3;
+      };
+
+      # Detect tabs vs spaces and indent width per file
+      guess-indent.enable = true;
+
       # Automatically inserts the closing bracket / quote
       nvim-autopairs.enable = true;
 
@@ -19,10 +28,25 @@
 
       # Close buffers without closing the window they are shown in
       mini-bufremove.enable = true;
+
+      # Move lines / selections with <M-hjkl> (vertical moves reindent)
+      mini-move.enable = true;
     };
 
     # Drop nvim-surround's visual S / gS (S is flash), rebound to gs / gS below
     globals.nvim_surround_no_visual_mappings = true;
+
+    # Briefly flash the yanked region
+    autoCmd = [
+      {
+        event = "TextYankPost";
+        callback.__raw = ''
+          function()
+            vim.hl.on_yank({ timeout = 200 })
+          end
+        '';
+      }
+    ];
 
     keymaps = [
       {
