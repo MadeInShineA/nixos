@@ -146,6 +146,13 @@ binds {
     XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
     XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
 
+    // Media (also bluetooth headphone buttons, forwarded by bluez as key presses)
+    XF86AudioPlay { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioPause { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioStop { spawn-sh "noctalia msg media stop"; }
+    XF86AudioNext { spawn-sh "noctalia msg media next"; }
+    XF86AudioPrev { spawn-sh "noctalia msg media previous"; }
+
     // Brightness
     XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
     XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
