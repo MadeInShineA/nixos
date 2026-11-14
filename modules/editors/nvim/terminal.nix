@@ -33,7 +33,7 @@
           "n"
           "t"
         ];
-        key = "<C-\\>";
+        key = "<C-t>";
         action = "<cmd>ToggleTerm<cr>";
         options.desc = "Terminal";
       }

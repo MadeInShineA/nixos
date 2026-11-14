@@ -5,7 +5,7 @@
       blink-cmp = {
         enable = true;
         settings = {
-          keymap.preset = "default";
+          keymap.preset = "enter";
           completion.documentation.auto_show = true;
           signature.enabled = true;
           sources.default = [
