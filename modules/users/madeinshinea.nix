@@ -46,6 +46,7 @@ in
       # Development
       git
       nix-tools
+      uv
       nvim
       zed
       vscodium
