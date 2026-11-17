@@ -22,6 +22,8 @@
       # Libvirt + virt-manager
       virtualisation.libvirtd = {
         enable = true;
+        onShutdown = "shutdown";
+        onBoot = "ignore";
         qemu = {
           package = pkgs.qemu_kvm;
           runAsRoot = true;
@@ -30,5 +32,9 @@
       };
 
       programs.virt-manager.enable = true;
+
+      # Whonix 18 Gateway uses passt (user-mode networking)
+      systemd.services.libvirtd.path = [ pkgs.passt ];
     };
+
 }
