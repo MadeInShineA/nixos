@@ -33,6 +33,10 @@
 
       programs.virt-manager.enable = true;
 
+      # libvirt uses its own nftables table, but the NixOS firewall still drops
+      # DHCP/DNS from guests on the NAT bridge unless the interface is trusted
+      networking.firewall.trustedInterfaces = [ "virbr0" ];
+
       # Whonix 18 Gateway uses passt (user-mode networking)
       systemd.services.libvirtd.path = [ pkgs.passt ];
     };
