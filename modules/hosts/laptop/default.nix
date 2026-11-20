@@ -5,15 +5,17 @@ let
 in
 {
   flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
-    modules = [ nixos.laptop ];
+    modules = [
+      nixos.laptop
+      ./_hardware-configuration.nix
+    ];
   };
 
+  # Shared by every laptop host (laptop, laptop-ssd); hardware is added per host
   flake.modules.nixos.laptop =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       imports = with nixos; [
-        ./_hardware-configuration.nix
-
         # System
         nix
         locale
@@ -42,7 +44,7 @@ in
         madeinshinea
       ];
 
-      networking.hostName = "laptop";
+      networking.hostName = lib.mkDefault "laptop";
 
       # Bootloader
       boot.loader.systemd-boot.enable = true;
