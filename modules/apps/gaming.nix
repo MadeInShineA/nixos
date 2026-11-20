@@ -31,7 +31,13 @@ in
         prismlauncher
         horizon-launcher # from the horizon overlay
         ares
-        azahar
+        # Force XWayland: native Wayland at fractional scale (1.75) renders off-centre
+        (symlinkJoin {
+          name = "azahar";
+          paths = [ azahar ];
+          nativeBuildInputs = [ makeWrapper ];
+          postBuild = "wrapProgram $out/bin/azahar --set QT_QPA_PLATFORM xcb";
+        })
         antimicrox
       ];
     };
