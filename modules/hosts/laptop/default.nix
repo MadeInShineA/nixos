@@ -4,7 +4,7 @@ let
   inherit (config.flake.modules) nixos;
 in
 {
-  flake.nixosConfigurations.laptop-host = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
     modules = [ nixos.laptop ];
   };
 
@@ -42,7 +42,7 @@ in
         madeinshinea
       ];
 
-      networking.hostName = "laptop-host";
+      networking.hostName = "laptop";
 
       # Bootloader
       boot.loader.systemd-boot.enable = true;
