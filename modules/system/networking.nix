@@ -1,7 +1,13 @@
+{ config, ... }:
+let
+  inherit (config.flake.modules) nixos homeManager;
+in
 {
   flake.modules.nixos.networking =
     { pkgs, ... }:
     {
+      imports = [ nixos.home-manager ];
+
       networking.networkmanager = {
         enable = true;
         plugins = with pkgs; [ networkmanager-openconnect ];
@@ -60,5 +66,17 @@
       };
 
       programs.nm-applet.enable = true;
+
+      home-manager.sharedModules = [ homeManager.networking ];
     };
+
+  # Hide the autostart nm-applet (no --indicator), tray clicks don't work with it on niri
+  flake.modules.homeManager.networking = {
+    xdg.configFile."autostart/nm-applet.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=NetworkManager Applet
+      Hidden=true
+    '';
+  };
 }
