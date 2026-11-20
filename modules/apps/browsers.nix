@@ -15,9 +15,40 @@ in
 
   flake.modules.homeManager.browsers =
     { pkgs, ... }:
+    let
+      # Install an extension from addons.mozilla.org through policies
+      amo = slug: {
+        installation_mode = "normal_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${slug}/latest.xpi";
+      };
+    in
     {
+      programs.librewolf = {
+        enable = true;
+
+        # Profiles live in the XDG location, not the module's default ~/.librewolf
+        configPath = ".config/librewolf/librewolf";
+
+        policies.ExtensionSettings = {
+          "uBlock0@raymondhill.net" = amo "ublock-origin";
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = amo "bitwarden-password-manager";
+          # Catppuccin theme
+          "{f5525f34-4102-4f6e-8478-3cf23cfeff7a}" = {
+            installation_mode = "normal_installed";
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/3880040/catppuccin-1.0.xpi";
+          };
+        };
+
+        profiles.madeinshinea = {
+          id = 0;
+          isDefault = true;
+          settings = {
+            "extensions.activeThemeID" = "{f5525f34-4102-4f6e-8478-3cf23cfeff7a}";
+          };
+        };
+      };
+
       home.packages = with pkgs; [
-        librewolf
         mullvad-browser
 
         # Firefox forced to X11/XWayland (fixes mouse input in GeForce Now)
