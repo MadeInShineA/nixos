@@ -34,6 +34,11 @@
       url = "github:horizon-rust/horizon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    slippi = {
+      url = "github:lytedev/slippi-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);

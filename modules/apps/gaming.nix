@@ -9,7 +9,9 @@ in
     {
       imports = [ nixos.home-manager ];
 
-      nixpkgs.overlays = [ inputs.horizon.overlays.default ];
+      nixpkgs.overlays = [
+        inputs.horizon.overlays.default
+      ];
 
       programs.steam.enable = true;
       # Controller support
@@ -27,9 +29,11 @@ in
   flake.modules.homeManager.gaming =
     { pkgs, ... }:
     {
+      imports = [ inputs.slippi.homeManagerModules.default ];
+
       home.packages = with pkgs; [
         prismlauncher
-        horizon-launcher # from the horizon overlay
+        horizon-launcher
         ares
         # Force XWayland: native Wayland at fractional scale (1.75) renders off-centre
         (symlinkJoin {
