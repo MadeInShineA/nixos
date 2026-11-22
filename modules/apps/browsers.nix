@@ -43,6 +43,10 @@ in
           # Sites whose cookies survive LibreWolf's clear-on-shutdown
           Cookies.Allow = [
             "https://github.com"
+            "https://kimi.ai"
+            "https://login.microsoftonline.com"
+            "https://outlook.cloud.microsoft"
+            "https://teams.microsoft.com"
           ];
         };
 
