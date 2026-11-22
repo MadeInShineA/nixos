@@ -47,6 +47,8 @@ in
             "https://login.microsoftonline.com"
             "https://outlook.cloud.microsoft"
             "https://teams.microsoft.com"
+            "https://youtube.com"
+            "https://twitch.com"
           ];
         };
 
