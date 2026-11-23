@@ -21,6 +21,7 @@ in
         locale
         networking
         vpn
+        adguardhome
         audio
         bluetooth
         power
