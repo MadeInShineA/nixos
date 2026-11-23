@@ -17,6 +17,9 @@
           CPU_MAX_PERF_ON_BAT = 10;
 
           STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+          # Don't autosuspend the USB ethernet dongle (ASIX AX88179A)
+          USB_DENYLIST = "0b95:1790";
         };
       };
 

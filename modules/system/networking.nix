@@ -65,6 +65,19 @@ in
         };
       };
 
+      # ASIX AX88179A USB-C ethernet dongle (cdc_ncm driver) comes back from suspend with
+      # "no carrier". Re-enumerate it after resume so it behaves like a fresh plug-in.
+      # (The vendor ax88179_178a driver doesn't work with the AX88179A, so don't switch to it.)
+      powerManagement.resumeCommands = ''
+        for dev in /sys/bus/usb/devices/*; do
+          if [ "$(cat "$dev/idVendor" 2>/dev/null)" = "0b95" ] && [ "$(cat "$dev/idProduct" 2>/dev/null)" = "1790" ]; then
+            echo 0 > "$dev/authorized"
+            sleep 1
+            echo 1 > "$dev/authorized"
+          fi
+        done
+      '';
+
       programs.nm-applet.enable = true;
 
       home-manager.sharedModules = [ homeManager.networking ];
