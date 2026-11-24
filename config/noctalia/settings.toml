@@ -203,7 +203,7 @@ wallpaper_scheme = "faithful"
 directory = "/home/madeinshinea/nixos/config/noctalia/walls"
 enabled = true
 fill_mode = "crop"
-transition_on_startup = true
+transition_on_startup = false
 
     [wallpaper.automation]
     enabled = false
@@ -211,13 +211,13 @@ transition_on_startup = true
     order = "random"
 
     [wallpaper.default]
-    path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
+    path = "/home/madeinshinea/.cache/noctalia/current-wall.png"
 
     [wallpaper.last]
-    path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
+    path = "/home/madeinshinea/.cache/noctalia/current-wall.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
+    path = "/home/madeinshinea/.cache/noctalia/current-wall.png"
 
 [widget.clock]
 anchor = true
