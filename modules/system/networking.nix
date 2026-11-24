@@ -13,6 +13,8 @@ in
         plugins = with pkgs; [ networkmanager-openconnect ];
 
         ensureProfiles = {
+          # Gitignored KEY=VALUE file (also loaded by nushell); provides EDUROAM_IDENTITY
+          environmentFiles = [ "/home/madeinshinea/nixos/.env" ];
           profiles = {
             eduroam = {
               connection = {
@@ -27,6 +29,10 @@ in
               "802-1x" = {
                 eap = "peap;";
                 phase2-auth = "mschapv2";
+                identity = "$EDUROAM_IDENTITY";
+                # Agent-owned secret: nm-applet prompts for the password, so it never lands in
+                # this config or the Nix store. No keyring on this system, so it isn't remembered.
+                password-flags = "1";
               };
               ipv4.method = "auto";
               ipv6.method = "auto";
