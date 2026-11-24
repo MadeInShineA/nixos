@@ -36,6 +36,9 @@ in
         foot
         cosmic
 
+        # Development
+        embedded
+
         # Apps
         browsers
         ai

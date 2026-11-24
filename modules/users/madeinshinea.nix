@@ -22,6 +22,9 @@ in
           "wheel"
           "podman"
           "libvirtd"
+
+          # serial ports (/dev/ttyACM*, e.g. micro:bit via minicom)
+          "dialout"
         ];
       };
 
