@@ -1,0 +1,11 @@
+{
+  "scopes": {
+    "global": {
+      "/home/madeinshinea/nixos/config/noctalia/walls": [
+        "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png",
+        "/home/madeinshinea/nixos/config/noctalia/walls/wall2.png"
+      ]
+    }
+  },
+  "version": 2
+}

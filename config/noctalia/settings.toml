@@ -195,16 +195,28 @@ community_palette = "Tokyo Night Storm"
 mode = "dark"
 pure_black_dark = true
 shell_mode = "follow"
-source = "builtin"
+source = "wallpaper"
 sync_color_scheme = true
+wallpaper_scheme = "faithful"
 
 [wallpaper]
 directory = "/home/madeinshinea/nixos/config/noctalia/walls"
+enabled = true
+fill_mode = "crop"
+transition_on_startup = true
+
+    [wallpaper.automation]
+    enabled = false
+    interval_seconds = 1800
+    order = "random"
 
     [wallpaper.default]
     path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
 
     [wallpaper.last]
+    path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
+
+    [wallpaper.monitors.eDP-1]
     path = "/home/madeinshinea/nixos/config/noctalia/walls/wall1.png"
 
 [widget.clock]

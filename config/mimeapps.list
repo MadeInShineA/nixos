@@ -49,6 +49,7 @@ x-scheme-handler/mailto=userapp-Thunderbird-1PFHZ3.desktop
 x-scheme-handler/mid=userapp-Thunderbird-1PFHZ3.desktop
 message/rfc822=userapp-Thunderbird-1PFHZ3.desktop
 x-scheme-handler/net.thunderbird=userapp-Thunderbird-VF7HZ3.desktop
+x-scheme-handler/discord-1549608280949792790=discord-1549608280949792790.desktop
 
 [Added Associations]
 x-scheme-handler/tg=org.telegram.desktop.desktop;
