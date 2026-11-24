@@ -14,6 +14,11 @@ in
       ];
 
       programs.steam.enable = true;
+      # Extra libs inside the steam-run FHS env (needed by MeleeUnlocked)
+      programs.steam.extraPackages = with pkgs; [
+        libxscrnsaver
+        libdecor
+      ];
       # Controller support
       hardware.steam-hardware.enable = true;
 
